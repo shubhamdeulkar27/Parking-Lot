@@ -42,7 +42,7 @@ namespace ParkingLot.Controllers
             try
             {
                 var parkResponse = this.parkingLotBL.Park(parkingDetails);
-                if(parkResponse != null)
+                if(parkResponse != null && parkResponse.ParkingSlot != "Unavailable")
                 {
                     return Ok(new { Success = true, Message = "Vehical Parked", Data = parkResponse });
                 }
