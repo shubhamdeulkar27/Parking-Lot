@@ -36,7 +36,7 @@ namespace RepositoryLayer.Services
         {
             try 
             {
-                var userObject = dBContext.Users.Where<User>(u => u.UserName.Equals(user.UserName) && u.Password.Equals(user.Password) && u.Role.Equals(user.Role) && u.Email.Equals(user.Email)).FirstOrDefault();
+                var userObject = dBContext.Users.Where<User>(u => u.UserName.Equals(user.UserName) || u.Role.Equals(user.Role) || u.Email.Equals(user.Email)).FirstOrDefault();
                 if (userObject == null)
                 {
                     dBContext.Users.Add(user);

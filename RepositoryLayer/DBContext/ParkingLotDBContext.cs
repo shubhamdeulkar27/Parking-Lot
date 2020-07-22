@@ -24,5 +24,10 @@ namespace RepositoryLayer.DBContext
         /// DbSet Property For User Model. 
         /// </summary>
         public DbSet<User> Users { get; set; }
+
+        /// <summary>
+        /// DbSet Property For Parking Details Model.
+        /// </summary>
+        public DbSet<ParkingDetails> ParkingDetails { get; set; }
     }
 }
