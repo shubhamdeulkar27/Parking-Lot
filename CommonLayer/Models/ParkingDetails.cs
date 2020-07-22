@@ -37,6 +37,8 @@ namespace CommonLayer.Models
 
         public string ParkingSlot { get; set; }
 
+        public string Status { get; set; }
+
         public System.DateTime ParkingDate { get; set; }
     }
 }

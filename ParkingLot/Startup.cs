@@ -31,7 +31,7 @@ namespace ParkingLot
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContextPool<ParkingLotDBContext>(
+            services.AddDbContext<ParkingLotDBContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("ParkingLotConnectionString")));
             services.AddScoped<IParkingLotBL, ParkingLotBL>();
             services.AddScoped<IParkingLotRL, ParkingLotRL>();
