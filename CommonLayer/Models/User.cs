@@ -18,7 +18,6 @@ namespace CommonLayer.Models
         [Required(ErrorMessage ="Username Required")]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage ="Email Id Required")]
         [EmailAddress]
         public string Email { get; set; }
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BusinessLayer.Interface
 {
-    interface IParkingLotBL
+    public interface IParkingLotBL
     {
     }
 }

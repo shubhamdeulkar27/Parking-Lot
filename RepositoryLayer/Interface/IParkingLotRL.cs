@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RepositoryLayer.Interface
 {
-    interface IParkingLotRL
+    public interface IParkingLotRL
     {
     }
 }
