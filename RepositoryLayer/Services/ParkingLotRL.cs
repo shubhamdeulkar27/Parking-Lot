@@ -14,7 +14,7 @@ namespace RepositoryLayer.Services
     public class ParkingLotRL : IParkingLotRL
     {
         //Constants.
-        private const int TotalLotLimit = 4;
+        private const int TotalLotLimit = 100;
         private const int LotALimit = 25;
         private const int LotBLimit = 25;
         private const int LotCLimit = 25;
