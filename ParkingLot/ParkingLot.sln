@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonLayer", "..\CommonLay
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryLayer", "..\RepositoryLayer\RepositoryLayer.csproj", "{0D68168C-503E-42A3-989E-31927725A950}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTests", "..\XUnitTests\XUnitTests.csproj", "{9855B9F5-1ED1-4DEC-BA7B-4EE85AABB776}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XunitTests", "..\XunitTests\XunitTests.csproj", "{ADABDAFD-45B2-4F69-AEAE-B8470153D516}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{0D68168C-503E-42A3-989E-31927725A950}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D68168C-503E-42A3-989E-31927725A950}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D68168C-503E-42A3-989E-31927725A950}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9855B9F5-1ED1-4DEC-BA7B-4EE85AABB776}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9855B9F5-1ED1-4DEC-BA7B-4EE85AABB776}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9855B9F5-1ED1-4DEC-BA7B-4EE85AABB776}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9855B9F5-1ED1-4DEC-BA7B-4EE85AABB776}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADABDAFD-45B2-4F69-AEAE-B8470153D516}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADABDAFD-45B2-4F69-AEAE-B8470153D516}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADABDAFD-45B2-4F69-AEAE-B8470153D516}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADABDAFD-45B2-4F69-AEAE-B8470153D516}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

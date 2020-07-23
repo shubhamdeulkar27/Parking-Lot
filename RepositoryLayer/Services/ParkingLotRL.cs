@@ -19,7 +19,7 @@ namespace RepositoryLayer.Services
         private const int LotBLimit = 25;
         private const int LotCLimit = 25;
         private const int LotDLimit = 25;
-        private const double RatePerHour = 10;
+        private const double RatePerHour = 40;
 
         /// <summary>
         /// DbContext Reference.
@@ -45,10 +45,10 @@ namespace RepositoryLayer.Services
             try
             {
                 //Checks If Vehical Is Already Parked.
-                var existsCondition = dBContext.ParkingDetails.Where<ParkingDetails>
-                    (p=> p.VehicalNumber.Equals(parkingDetails.VehicalNumber) && p.Status=="Parked").FirstOrDefault();
+                var parkingDetailsExists = dBContext.ParkingDetails.Where<ParkingDetails>
+                    (p=> p.VehicalNumber.Equals(parkingDetails.VehicalNumber)).FirstOrDefault();
 
-                if (existsCondition == null)
+                if (parkingDetailsExists == null)
                 {
                     //Assiging ParkingSlot 
                     parkingDetails.ParkingSlot = AssignSlot();
@@ -68,9 +68,31 @@ namespace RepositoryLayer.Services
                     }
                     return parkingDetails;
                 }
+                else if(parkingDetailsExists.Status== "Unparked")
+                {
+                    //Assiging ParkingSlot 
+                    parkingDetailsExists.ParkingSlot = AssignSlot();
+
+                    //Checking Which Parking Slot is Assigned.
+                    if (parkingDetailsExists.ParkingSlot == "A" || parkingDetailsExists.ParkingSlot == "B" ||
+                        parkingDetailsExists.ParkingSlot == "C" || parkingDetailsExists.ParkingSlot == "D")
+                    {
+                        //Setting Status and DateTime
+                        parkingDetailsExists.Status = "Parked";
+                        parkingDetailsExists.ParkingDate = DateTime.Now;
+                        parkingDetailsExists.TotalTime = 0;
+                        parkingDetailsExists.TotalAmount = 0;
+
+                        //Updating DataBase With The Data.
+                        //dBContext.ParkingDetails.Add(parkingDetails);
+                        dBContext.SaveChanges();
+
+                    }
+                    return parkingDetailsExists;
+                }
                 else
                 {
-                    return existsCondition = null;
+                    return parkingDetailsExists = null;
                 }
             }
             catch(Exception exception)
