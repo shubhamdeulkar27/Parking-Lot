@@ -40,5 +40,12 @@ namespace CommonLayer.Models
         public string Status { get; set; }
 
         public System.DateTime ParkingDate { get; set; }
+
+        public System.DateTime UnparkDate { get; set; }
+
+        public double TotalTime { get; set; }
+
+        public double TotalAmount { get; set; }
+
     }
 }
