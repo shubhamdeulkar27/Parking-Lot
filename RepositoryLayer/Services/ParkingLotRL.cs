@@ -162,7 +162,8 @@ namespace RepositoryLayer.Services
                     {
                         vehicalExists.UnparkDate = DateTime.Now;
                         vehicalExists.TotalTime = vehicalExists.UnparkDate.Subtract(vehicalExists.ParkingDate).TotalHours;
-                        vehicalExists.TotalAmount = vehicalExists.TotalTime * RatePerHour;
+                        double Amount = vehicalExists.TotalTime * RatePerHour;
+                        vehicalExists.TotalAmount = Amount > RatePerHour ? Amount : RatePerHour;
                         vehicalExists.Status = "Unparked";
                         vehicalExists.ParkingSlot = null;
                         dBContext.SaveChanges();
