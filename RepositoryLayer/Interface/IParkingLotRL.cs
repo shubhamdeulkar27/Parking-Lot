@@ -26,5 +26,11 @@ namespace RepositoryLayer.Interface
         /// <param name="parkingDetails"></param>
         /// <returns></returns>
         ParkingDetails Unpark(string VehicalNumber);
+
+        /// <summary>
+        /// Abstract Function For Check Parking Lot Status Function Implementation.
+        /// </summary>
+        /// <returns></returns>
+        bool CheckLotStatus();
     }
 }

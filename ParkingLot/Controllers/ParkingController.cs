@@ -52,7 +52,7 @@ namespace ParkingLot.Controllers
                 }
                 else
                 {
-                    return NotFound(new { Success = false, Message = "Lot Is Unavailable" });
+                    return NotFound(new { Success = false, Message = "Lot Is Full" });
                 }
                 
             }
@@ -85,6 +85,33 @@ namespace ParkingLot.Controllers
                 else
                 {
                     return NotFound(new { Success = false, Message = "Vehical Not Found." });
+                }
+            }
+            catch(Exception exception)
+            {
+                return BadRequest(new { Success = false, Message = exception.Message });
+            }
+        }
+
+        /// <summary>
+        /// Function For Checking Parking Lot Status.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("LotStatus")]
+        public IActionResult CheckLotStatus()
+        { 
+            try
+            {
+                bool status = this.parkingLotBL.CheckLotStatus();
+
+                if(status)
+                {
+                    return Ok(new { Success = true, Message = "Lot Is Available" });
+                }
+                else
+                {
+                    return NotFound(new { Success = false, Message = "Lot Is Full" });
                 }
             }
             catch(Exception exception)

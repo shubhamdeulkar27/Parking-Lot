@@ -87,5 +87,22 @@ namespace BusinessLayer.Services
                 throw exception;
             }
         }
+
+        /// <summary>
+        /// Function For Checking Parking Lot Status.
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckLotStatus()
+        {
+            try
+            {
+                return this.parkingLotRL.CheckLotStatus();
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
+
     }
 }

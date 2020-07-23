@@ -14,7 +14,7 @@ namespace RepositoryLayer.Services
     public class ParkingLotRL : IParkingLotRL
     {
         //Constants.
-        private const int TotalLotLimit = 100;
+        private const int TotalLotLimit = 4;
         private const int LotALimit = 25;
         private const int LotBLimit = 25;
         private const int LotCLimit = 25;
@@ -185,6 +185,24 @@ namespace RepositoryLayer.Services
                 throw exception;
             }
             
+        }
+
+        /// <summary>
+        /// Function For Checking Parking Lot Status.
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckLotStatus()
+        {
+            try
+            {
+                int parkedVehicalCount = dBContext.ParkingDetails.Where<ParkingDetails>(p => p.Status == "Parked").Count();
+                bool status = parkedVehicalCount < TotalLotLimit ? true : false;
+                return status;
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
         }
     }
 }
