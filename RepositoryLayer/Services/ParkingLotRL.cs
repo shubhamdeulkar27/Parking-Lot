@@ -14,11 +14,12 @@ namespace RepositoryLayer.Services
     public class ParkingLotRL : IParkingLotRL
     {
         //Constants.
-        private readonly int TotalLotLimit = 0;
-        private readonly int LotALimit = 25;
-        private readonly int LotBLimit = 25;
-        private readonly int LotCLimit = 25;
-        private readonly int LotDLimit = 25;
+        private const int TotalLotLimit = 100;
+        private const int LotALimit = 25;
+        private const int LotBLimit = 25;
+        private const int LotCLimit = 25;
+        private const int LotDLimit = 25;
+        private const double RatePerHour = 10;
 
         /// <summary>
         /// DbContext Reference.
@@ -84,35 +85,83 @@ namespace RepositoryLayer.Services
         /// <returns></returns>
         public string AssignSlot()
         {
-            //Checking For Total Lot Vacancy.
-            int limitCondition = dBContext.ParkingDetails.Where<ParkingDetails>(p => p.Status == "Parked").Count();
-            if (limitCondition < TotalLotLimit)
+            try 
             {
-                //Checking For Specific Lot Vacancy.
-                int lotAAvailable = dBContext.ParkingDetails.Where<ParkingDetails>(p => p.ParkingSlot == "A" && p.Status == "Parked").Count();
-                int lotBAvailable = dBContext.ParkingDetails.Where<ParkingDetails>(p => p.ParkingSlot == "B" && p.Status == "Parked").Count();
-                int lotCAvailable = dBContext.ParkingDetails.Where<ParkingDetails>(p => p.ParkingSlot == "C" && p.Status == "Parked").Count();
-                int lotDAvailable = dBContext.ParkingDetails.Where<ParkingDetails>(p => p.ParkingSlot == "D" && p.Status == "Parked").Count();
+                //Checking For Total Lot Vacancy.
+                int limitCondition = dBContext.ParkingDetails.Where<ParkingDetails>(p => p.Status == "Parked").Count();
+                if (limitCondition < TotalLotLimit)
+                {
+                    //Checking For Specific Lot Vacancy.
+                    int lotAAvailable = dBContext.ParkingDetails.Where<ParkingDetails>(p => p.ParkingSlot == "A" && p.Status == "Parked").Count();
+                    int lotBAvailable = dBContext.ParkingDetails.Where<ParkingDetails>(p => p.ParkingSlot == "B" && p.Status == "Parked").Count();
+                    int lotCAvailable = dBContext.ParkingDetails.Where<ParkingDetails>(p => p.ParkingSlot == "C" && p.Status == "Parked").Count();
+                    int lotDAvailable = dBContext.ParkingDetails.Where<ParkingDetails>(p => p.ParkingSlot == "D" && p.Status == "Parked").Count();
 
-                //Depending On Vaccancy, Slot will be Provided.
-                if(lotAAvailable < LotALimit && (lotAAvailable > lotBAvailable && lotBAvailable > lotCAvailable && lotCAvailable > lotDAvailable))
-                {
-                    return "A";
+                    //Depending On Vaccancy, Slot will be Provided.
+                    if (lotAAvailable < LotALimit && (lotAAvailable > lotBAvailable && lotBAvailable > lotCAvailable && lotCAvailable > lotDAvailable))
+                    {
+                        return "A";
+                    }
+                    else if (lotBAvailable < LotBLimit && (lotBAvailable > lotCAvailable && lotCAvailable > lotDAvailable && lotDAvailable > lotAAvailable))
+                    {
+                        return "B";
+                    }
+                    else if (lotCAvailable < LotCLimit && (lotCAvailable > lotDAvailable && lotDAvailable > lotAAvailable && lotAAvailable > lotBAvailable))
+                    {
+                        return "C";
+                    }
+                    else if (lotDAvailable < LotDLimit)
+                    {
+                        return "D";
+                    }
                 }
-                else if (lotBAvailable < LotBLimit && (lotBAvailable > lotCAvailable && lotCAvailable > lotDAvailable && lotDAvailable > lotAAvailable ))
+                return "Unavailable";
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
+
+        /// <summary>
+        /// Function For Unpark Api.
+        /// </summary>
+        /// <param name="VehicalNumber"></param>
+        /// <returns></returns>
+        public ParkingDetails Unpark(string VehicalNumber)
+        {
+            try
+            {
+                ParkingDetails vehicalExists = dBContext.ParkingDetails.Where<ParkingDetails>
+                (p => p.VehicalNumber.Equals(VehicalNumber)).FirstOrDefault();
+                if (vehicalExists != null)
                 {
-                    return "B";
+                    if (vehicalExists.Status == "Parked")
+                    {
+                        vehicalExists.UnparkDate = DateTime.Now;
+                        vehicalExists.TotalTime = vehicalExists.UnparkDate.Subtract(vehicalExists.ParkingDate).TotalHours;
+                        vehicalExists.TotalAmount = vehicalExists.TotalTime * RatePerHour;
+                        vehicalExists.Status = "Unparked";
+                        vehicalExists.ParkingSlot = null;
+                        dBContext.SaveChanges();
+                        return vehicalExists;
+                    }
+                    else if (vehicalExists.Status == "Unparked")
+                    {
+                        vehicalExists.Status = "!Unparked";
+                    }
+                    return vehicalExists;
                 }
-                else if (lotCAvailable < LotCLimit && (lotCAvailable > lotDAvailable && lotDAvailable > lotAAvailable && lotAAvailable > lotBAvailable))
+                else
                 {
-                    return "C";
-                }
-                else if (lotDAvailable < LotDLimit )
-                {
-                    return "D";
+                    return vehicalExists = null;
                 }
             }
-            return "Unavailable";
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+            
         }
     }
 }

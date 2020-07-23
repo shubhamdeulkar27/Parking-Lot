@@ -5,6 +5,7 @@ using RepositoryLayer.Interface;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace BusinessLayer.Services
 {
@@ -51,6 +52,35 @@ namespace BusinessLayer.Services
                 }
 
                 return this.parkingLotRL.Park(parkingDetails);
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
+
+        /// <summary>
+        /// Function For Unpark Vehical.
+        /// </summary>
+        /// <param name="VehicalNumber"></param>
+        /// <returns></returns>
+        public ParkingDetails Unpark(string VehicalNumber)
+        {
+            try
+            {
+                //Throws Custom Exception If VehicalNumber Is Null;
+                if(VehicalNumber==null)
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
+                }
+
+                //Throws Custom Exception If VehicalNumber Is Not in Valid Format.
+                if (!Regex.IsMatch(VehicalNumber, @"^[A-Z]{2}\s[0-9]{2}\s[A-Z]{1,2}\s[0-9]{4}$"))
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.INVALID_VEHICAL_NUMBER_FORMAT.ToString() + "Please Enter Vehical In 'MH 01 AZ 2005' This Format.");
+                }
+ 
+                return this.parkingLotRL.Unpark(VehicalNumber);
             }
             catch(Exception exception)
             {

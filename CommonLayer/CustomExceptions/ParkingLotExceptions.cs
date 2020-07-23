@@ -12,7 +12,8 @@ namespace CommonLayer.CustomExceptions
         public enum ExceptionType
         {
             NULL_FIELD_EXCEPTION,
-            EMPTY_FIELD_EXCEPTION
+            EMPTY_FIELD_EXCEPTION,
+            INVALID_VEHICAL_NUMBER_FORMAT
         }
 
         /// <summary>

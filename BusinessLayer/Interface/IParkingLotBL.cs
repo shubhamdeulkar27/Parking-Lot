@@ -13,5 +13,12 @@ namespace BusinessLayer.Interface
         /// <param name="parkingDetails"></param>
         /// <returns></returns>
         ParkingDetails Park(ParkingDetails parkingDetails);
+
+        /// <summary>
+        /// Abstract Function For Unpark Vehical.
+        /// </summary>
+        /// <param name="parkingDetails"></param>
+        /// <returns></returns>
+        ParkingDetails Unpark(string VehicalNumber);
     }
 }

@@ -61,5 +61,36 @@ namespace ParkingLot.Controllers
                 return BadRequest(new { Success = false, Message = exception.Message });
             }
         }
+
+        /// <summary>
+        /// Function For Vehical Unpark.
+        /// </summary>
+        /// <param name="VehicalNumber"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("Unpark/{VehicalNumber}")]
+        public IActionResult Unpark([FromRoute] string VehicalNumber)
+        { 
+            try
+            {
+                var unparkResponse = this.parkingLotBL.Unpark(VehicalNumber);
+                if(unparkResponse != null && unparkResponse.Status=="Unparked")
+                {
+                    return Ok(new { Success = true, Message = "Vehical Unparked", Data = unparkResponse });
+                }
+                else if(unparkResponse != null && unparkResponse.Status == "!Unparked")
+                {
+                    return Conflict(new { Success = false, Message = "Vehical Already Unparked."});
+                }
+                else
+                {
+                    return NotFound(new { Success = false, Message = "Vehical Not Found." });
+                }
+            }
+            catch(Exception exception)
+            {
+                return BadRequest(new { Success = false, Message = exception.Message });
+            }
+        }
     }
 }

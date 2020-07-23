@@ -19,5 +19,12 @@ namespace RepositoryLayer.Interface
         /// </summary>
         /// <returns></returns>
         string AssignSlot();
+
+        /// <summary>
+        /// Abstract Function For Unpark Vehical.
+        /// </summary>
+        /// <param name="parkingDetails"></param>
+        /// <returns></returns>
+        ParkingDetails Unpark(string VehicalNumber);
     }
 }
