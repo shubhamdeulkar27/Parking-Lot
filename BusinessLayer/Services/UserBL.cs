@@ -57,25 +57,20 @@ namespace BusinessLayer.Services
             try
             {
                 //Throws Custom Exception When Fields are Null.
-                if (user.UserName == null || user.Role == null || user.Password == null)
+                if (user.UserName == null || user.Role == null || user.Password == null || user.Email == null)
                 {
                     throw new Exception(UserExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
                 }
 
                 //Throws Custom Exception When Fields are Empty Strings.
-                if (user.UserName == ""  || user.Role == "" || user.Password == "" )
-                {
-                    throw new Exception(UserExceptions.ExceptionType.EMPTY_FIELD_EXCEPTION.ToString());
-                }
-
-                if(user.Email==null || user.Email=="")
+                if (user.UserName == ""  || user.Role == "" || user.Password == "" || user.Email == "")
                 {
                     throw new Exception(UserExceptions.ExceptionType.EMPTY_FIELD_EXCEPTION.ToString());
                 }
 
                 //Throws Custom Exception When Role is Invalid.
-                if (user.Role.Equals(Roles.Admin) || user.Role.Equals(Roles.Driver) ||
-                   user.Role.Equals(Roles.Police) || user.Role.Equals(Roles.Security))
+                if (!user.Role.Equals(Roles.Admin) || !user.Role.Equals(Roles.Driver) ||
+                   !user.Role.Equals(Roles.Police) || !user.Role.Equals(Roles.Security))
                 {
                     throw new Exception(UserExceptions.ExceptionType.INVALID_USER_ROLE_EXCEPTION.ToString());
                 }
@@ -111,8 +106,8 @@ namespace BusinessLayer.Services
                 }
 
                 //Throws Custom Exception When Role is Invalid.
-                if (user.Role.Equals(Roles.Admin) || user.Role.Equals(Roles.Driver) ||
-                   user.Role.Equals(Roles.Police) || user.Role.Equals(Roles.Security))
+                if (!user.Role.Equals(Roles.Admin) || !user.Role.Equals(Roles.Driver) ||
+                   !user.Role.Equals(Roles.Police) || !user.Role.Equals(Roles.Security))
                 {
                     throw new Exception(UserExceptions.ExceptionType.INVALID_USER_ROLE_EXCEPTION.ToString());
                 }
