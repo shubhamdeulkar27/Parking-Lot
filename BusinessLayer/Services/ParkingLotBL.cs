@@ -190,5 +190,35 @@ namespace BusinessLayer.Services
                 throw exception;
             }
         }
+
+        /// <summary>
+        /// Function to get all vehical info of specified brand and color. 
+        /// </summary>
+        /// <param name="brand"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public List<ParkingDetails> GetVehicalDetailsByBrandAndColor(string brand, string color)
+        {
+            try
+            {
+                //Throw Exception When Field is Null.
+                if (brand == null || color == null)
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
+                }
+
+                //Throws Exception when field is empty.
+                if (brand == "" || color== "")
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.EMPTY_FIELD_EXCEPTION.ToString());
+                }
+
+                return this.parkingLotRL.GetVehicalDetailsByBrandAndColor(brand,color);
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+        }
     }
 }

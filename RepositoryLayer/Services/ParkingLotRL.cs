@@ -302,5 +302,35 @@ namespace RepositoryLayer.Services
                 throw exception;
             }
         }
+
+        /// <summary>
+        /// Function for getting all vehical info of specified brand and color.
+        /// </summary>
+        /// <param name="brand"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public List<ParkingDetails> GetVehicalDetailsByBrandAndColor(string brand, string color)
+        {
+            try
+            {
+                if (dBContext.ParkingDetails.Any(x => x.Brand == brand && x.Color == color))
+                {
+                    var data = (from ParkingDetails in dBContext.ParkingDetails
+                                where ParkingDetails.Brand == brand
+                                && ParkingDetails.Color == color
+                                && ParkingDetails.Status == "Parked"
+                                select ParkingDetails).ToList();
+                    return data;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+        }
     }
 }

@@ -36,7 +36,7 @@ namespace ParkingLot.Controllers
         /// </summary>
         /// <param name="parkingDetails"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize(Roles= "Admin, Driver, Attendant ")]
         [HttpPost]
         [Route("Park")]
         public IActionResult Park([FromBody]ParkingDetails parkingDetails)
@@ -69,7 +69,7 @@ namespace ParkingLot.Controllers
         /// </summary>
         /// <param name="VehicalNumber"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize(Roles = "Admin, Driver")]
         [HttpPost]
         [Route("Unpark/{VehicalNumber}")]
         public IActionResult Unpark([FromRoute] string VehicalNumber)
@@ -129,7 +129,7 @@ namespace ParkingLot.Controllers
         /// </summary>
         /// <param name="VehicalNumber"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize(Roles ="Admin, Driver")]
         [HttpGet]
         [Route("FindByNumber/{VehicalNumber}")]
         public IActionResult GetVehicalByNumber([FromRoute] string VehicalNumber)
@@ -161,7 +161,7 @@ namespace ParkingLot.Controllers
         /// </summary>
         /// <param name="Color"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize(Roles ="Admin, Police, Security, Owner")]
         [HttpGet]
         [Route("GetByColor/{Color}")]
         public IActionResult GetVehicalDetailsByColor([FromRoute] string Color)
@@ -185,11 +185,11 @@ namespace ParkingLot.Controllers
         }
 
         /// <summary>
-        /// Function To Find Vehicals By Color.
+        /// Function To Find Vehicals By Brand.
         /// </summary>
         /// <param name="Brand"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize(Roles = "Admin, Police, Security, Owner")]
         [HttpGet]
         [Route("GetByBrand/{Brand}")]
         public IActionResult GetVehicalDetailsByBrand([FromRoute] string Brand)
@@ -197,6 +197,34 @@ namespace ParkingLot.Controllers
             try
             {
                 var list = this.parkingLotBL.GetVehicalDetailsByBrand(Brand);
+                if (list != null)
+                {
+                    return Ok(new { Success = true, Message = "Vehical Details Fetched Successful", Data = list });
+                }
+                else
+                {
+                    return NotFound(new { Success = false, Message = "No Car Found" });
+                }
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(new { Success = false, Message = exception.Message });
+            }
+        }
+
+                /// <summary>
+        /// Function To Find Vehicals By Color and Brand.
+        /// </summary>
+        /// <param name="Brand"></param>
+        /// <returns></returns>
+        [Authorize(Roles = "Admin, Police, Security")]
+        [HttpGet]
+        [Route("GetByBrandAndColor/{Brand}/{Color}")]
+        public IActionResult GetVehicalDetailsByBrandAndColor([FromRoute] string Brand, [FromRoute] string Color)
+        {
+            try
+            {
+                var list = this.parkingLotBL.GetVehicalDetailsByBrandAndColor(Brand,Color);
                 if (list != null)
                 {
                     return Ok(new { Success = true, Message = "Vehical Details Fetched Successful", Data = list });
