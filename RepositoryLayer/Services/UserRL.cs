@@ -63,7 +63,7 @@ namespace RepositoryLayer.Services
         {
             try 
             {
-                var userObject = dBContext.Users.Where<User>(u => u.UserName.Equals(user.UserName) && u.Password.Equals(user.Password) && u.Role.Equals(user.Role)).FirstOrDefault();
+                var userObject = dBContext.Users.Where<User>(u => u.UserName.Equals(user.UserName) && u.Password.Equals(user.Password)).FirstOrDefault();
                 return userObject;
             }
             catch(Exception exception)

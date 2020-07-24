@@ -74,7 +74,7 @@ namespace ParkingLot.Controllers
                 }
                 else
                 {
-                    return NotFound(new { Success = false, Message = "Login Failed" });
+                    return NotFound(new { Success = false, Message = "User Not Found" });
                 }
             }
             catch(Exception exception)
