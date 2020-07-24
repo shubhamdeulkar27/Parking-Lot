@@ -70,7 +70,8 @@ namespace BusinessLayer.Services
 
                 //Throws Custom Exception When Role is Invalid.
                 if (user.Role.Equals(Roles.Admin.ToString()) || user.Role.Equals(Roles.Driver.ToString()) ||
-                   user.Role.Equals(Roles.Police.ToString()) || user.Role.Equals(Roles.Security.ToString()))
+                   user.Role.Equals(Roles.Police.ToString()) || user.Role.Equals(Roles.Security.ToString()) ||
+                   user.Role.Equals(Roles.Owner.ToString()) || user.Role.Equals(Roles.Attendant.ToString()))
                 {
                     user.Password = EncodePasswordToBase64(user.Password);
                     return this.userRL.RegisterUser(user);

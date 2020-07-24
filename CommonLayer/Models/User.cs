@@ -21,7 +21,7 @@ namespace CommonLayer.Models
         [EmailAddress]
         public string Email { get; set; }
 
-        [RegularExpression(@"^Admin|^Security$|^Police$|^Driver$", ErrorMessage ="Roles are Admin, Security, Police and Driver")]
+        [RegularExpression(@"^Admin|^Security$|^Police$|^Driver$|^Owner$|^Attendant$", ErrorMessage = "Roles are Admin, Security, Police, Driver, Attendant and Owner")]
         public string Role { get; set; }
 
         [Required(ErrorMessage ="Password is Required")]

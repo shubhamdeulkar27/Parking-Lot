@@ -44,7 +44,7 @@ namespace ParkingLot.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Owner")]
         [HttpPost]
         [Route("Registration")]
         public IActionResult RegisterUser([FromBody] User user)
@@ -54,7 +54,7 @@ namespace ParkingLot.Controllers
                 User responseUser = userBL.RegisterUser(user);
                 if(responseUser!=null)
                 {
-                    return Ok(new { Success = true, Message = "Registration Successfull", Data = responseUser });
+                    return Ok(new { Success = true, Message = "Registration Successfull", Data = responseUser.UserName });
                 }
                 else
                 {
