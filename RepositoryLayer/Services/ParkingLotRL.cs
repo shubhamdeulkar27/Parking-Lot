@@ -51,7 +51,7 @@ namespace RepositoryLayer.Services
                 if (parkingDetailsExists == null)
                 {
                     //Assiging ParkingSlot 
-                    parkingDetails.ParkingSlot = AssignSlot();
+                    parkingDetails.ParkingSlot = AssignSlot(parkingDetails);
                     
                     //Checking Which Parking Slot is Assigned.
                     if(parkingDetails.ParkingSlot == "A" || parkingDetails.ParkingSlot == "B" ||
@@ -71,7 +71,7 @@ namespace RepositoryLayer.Services
                 else if(parkingDetailsExists.Status== "Unparked")
                 {
                     //Assiging ParkingSlot 
-                    parkingDetailsExists.ParkingSlot = AssignSlot();
+                    parkingDetailsExists.ParkingSlot = AssignSlot(parkingDetails);
 
                     //Checking Which Parking Slot is Assigned.
                     if (parkingDetailsExists.ParkingSlot == "A" || parkingDetailsExists.ParkingSlot == "B" ||
@@ -105,7 +105,7 @@ namespace RepositoryLayer.Services
         /// Function For Assigning Slot.
         /// </summary>
         /// <returns></returns>
-        public string AssignSlot()
+        public string AssignSlot(ParkingDetails parkingDetails)
         {
             try 
             {
@@ -119,22 +119,45 @@ namespace RepositoryLayer.Services
                     int lotCAvailable = dBContext.ParkingDetails.Where<ParkingDetails>(p => p.ParkingSlot == "C" && p.Status == "Parked").Count();
                     int lotDAvailable = dBContext.ParkingDetails.Where<ParkingDetails>(p => p.ParkingSlot == "D" && p.Status == "Parked").Count();
 
-                    //Depending On Vaccancy, Slot will be Provided.
-                    if (lotAAvailable < LotALimit && (lotAAvailable > lotBAvailable && lotBAvailable > lotCAvailable && lotCAvailable > lotDAvailable))
+                    if(parkingDetails.IsHandicap)
                     {
-                        return "A";
+                        //Depending On Vaccancy, Slot will be Provided.
+                        if (lotAAvailable < LotALimit )
+                        {
+                            return "A";
+                        }
+                        else if (lotBAvailable < LotBLimit )
+                        {
+                            return "B";
+                        }
+                        else if (lotCAvailable < LotCLimit )
+                        {
+                            return "C";
+                        }
+                        else if (lotDAvailable < LotDLimit)
+                        {
+                            return "D";
+                        }
                     }
-                    else if (lotBAvailable < LotBLimit && (lotBAvailable > lotCAvailable && lotCAvailable > lotDAvailable && lotDAvailable > lotAAvailable))
+                    else
                     {
-                        return "B";
-                    }
-                    else if (lotCAvailable < LotCLimit && (lotCAvailable > lotDAvailable && lotDAvailable > lotAAvailable && lotAAvailable > lotBAvailable))
-                    {
-                        return "C";
-                    }
-                    else if (lotDAvailable < LotDLimit)
-                    {
-                        return "D";
+                        //Depending On Vaccancy, Slot will be Provided.
+                        if (lotAAvailable < LotALimit && (lotAAvailable > lotBAvailable && lotBAvailable > lotCAvailable && lotCAvailable > lotDAvailable))
+                        {
+                            return "A";
+                        }
+                        else if (lotBAvailable < LotBLimit && (lotBAvailable > lotCAvailable && lotCAvailable > lotDAvailable && lotDAvailable > lotAAvailable))
+                        {
+                            return "B";
+                        }
+                        else if (lotCAvailable < LotCLimit && (lotCAvailable > lotDAvailable && lotDAvailable > lotAAvailable && lotAAvailable > lotBAvailable))
+                        {
+                            return "C";
+                        }
+                        else if (lotDAvailable < LotDLimit)
+                        {
+                            return "D";
+                        }
                     }
                 }
                 return "Unavailable";

@@ -18,7 +18,7 @@ namespace RepositoryLayer.Interface
         /// Abstract Function For Assigning Slot.
         /// </summary>
         /// <returns></returns>
-        string AssignSlot();
+        string AssignSlot(ParkingDetails parkingDetails);
 
         /// <summary>
         /// Abstract Function For Unpark Vehical.

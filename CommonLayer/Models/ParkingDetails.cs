@@ -48,6 +48,5 @@ namespace CommonLayer.Models
         public double TotalAmount { get; set; }
 
         public bool IsHandicap { get; set; }
-
     }
 }
