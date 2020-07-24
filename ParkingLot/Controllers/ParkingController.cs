@@ -183,5 +183,33 @@ namespace ParkingLot.Controllers
                 return BadRequest(new { Success = false, Message = exception.Message });
             }
         }
+
+        /// <summary>
+        /// Function To Find Vehicals By Color.
+        /// </summary>
+        /// <param name="Brand"></param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet]
+        [Route("GetByBrand/{Brand}")]
+        public IActionResult GetVehicalDetailsByBrand([FromRoute] string Brand)
+        {
+            try
+            {
+                var list = this.parkingLotBL.GetVehicalDetailsByBrand(Brand);
+                if (list != null)
+                {
+                    return Ok(new { Success = true, Message = "Vehical Details Fetched Successful", Data = list });
+                }
+                else
+                {
+                    return NotFound(new { Success = false, Message = "No Car Found" });
+                }
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(new { Success = false, Message = exception.Message });
+            }
+        }
     }
 }

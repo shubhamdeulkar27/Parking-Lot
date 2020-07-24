@@ -161,5 +161,34 @@ namespace BusinessLayer.Services
                 throw exception;
             }
         }
+
+        /// <summary>
+        /// Function For Getting Vehicals Of Specified Brand.
+        /// </summary>
+        /// <param name="brand"></param>
+        /// <returns></returns>
+        public List<ParkingDetails> GetVehicalDetailsByBrand(string brand)
+        {
+            try
+            {
+                //Throw Exception When Field is Null.
+                if(brand==null)
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
+                }
+
+                //Throws Exception when field is empty.
+                if (brand == "")
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.EMPTY_FIELD_EXCEPTION.ToString());
+                }
+
+                return this.parkingLotRL.GetVehicalDetailsByBrand(brand);
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
     }
 }

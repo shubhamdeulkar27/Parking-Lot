@@ -40,6 +40,19 @@ namespace RepositoryLayer.Interface
         /// <returns></returns>
 
         ParkingDetails GetVehicalByNumber(string vehicalNumber);
+
+        /// <summary>
+        /// Abstract Function For Get Vehicals info By Color Implementation.
+        /// </summary>
+        /// <param name="vehicalColor"></param>
+        /// <returns></returns>
         List<ParkingDetails> GetVehicalDetailsByColor(string vehicalColor);
+
+        /// <summary>
+        /// Abstract Function For Get Vehicals info By Brand Implementation.
+        /// </summary>
+        /// <param name="brand"></param>
+        /// <returns></returns>
+        List<ParkingDetails> GetVehicalDetailsByBrand(string brand);
     }
 }

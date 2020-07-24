@@ -274,5 +274,33 @@ namespace RepositoryLayer.Services
                 throw exception;
             }
         }
+
+        /// <summary>
+        /// Function For Getting Vehicals By Brand Name.
+        /// </summary>
+        /// <param name="brand"></param>
+        /// <returns></returns>
+        public List<ParkingDetails> GetVehicalDetailsByBrand(string brand)
+        {
+            try
+            {
+                if (dBContext.ParkingDetails.Any(x => x.Brand == brand))
+                {
+                    var data = (from ParkingDetails in dBContext.ParkingDetails
+                                where ParkingDetails.Brand == brand
+                                && ParkingDetails.Status == "Parked"
+                                select ParkingDetails).ToList();
+                    return data;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+        }
     }
 }
