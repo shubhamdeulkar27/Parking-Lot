@@ -69,14 +69,16 @@ namespace BusinessLayer.Services
                 }
 
                 //Throws Custom Exception When Role is Invalid.
-                if (!user.Role.Equals(Roles.Admin) || !user.Role.Equals(Roles.Driver) ||
-                   !user.Role.Equals(Roles.Police) || !user.Role.Equals(Roles.Security))
+                if (user.Role.Equals(Roles.Admin.ToString()) || user.Role.Equals(Roles.Driver.ToString()) ||
+                   user.Role.Equals(Roles.Police.ToString()) || user.Role.Equals(Roles.Security.ToString()))
                 {
-                    throw new Exception(UserExceptions.ExceptionType.INVALID_USER_ROLE_EXCEPTION.ToString());
+                    user.Password = EncodePasswordToBase64(user.Password);
+                    return this.userRL.RegisterUser(user);
                 }
-
-                user.Password = EncodePasswordToBase64(user.Password);
-                return this.userRL.RegisterUser(user);
+                else 
+                { 
+                    throw new Exception(UserExceptions.ExceptionType.INVALID_USER_ROLE_EXCEPTION.ToString()); 
+                }
             }
             catch(Exception exception)
             {

@@ -47,7 +47,7 @@ namespace ParkingLot.Controllers
                 }
                 else
                 {
-                    return Conflict(new { Success = false, Message = "Registration Failed" });
+                    return Conflict(new { Success = false, Message = "User Already Exists" });
                 }
             }
             catch(Exception exception)
