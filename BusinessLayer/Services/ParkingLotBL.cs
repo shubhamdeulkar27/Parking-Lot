@@ -132,5 +132,34 @@ namespace BusinessLayer.Services
                 throw exception;
             }
         }
+
+        /// <summary>
+        /// Function For Get vehicals Details By Color.
+        /// </summary>
+        /// <param name="vehicalColor"></param>
+        /// <returns></returns>
+        public List<ParkingDetails> GetVehicalDetailsByColor(string vehicalColor)
+        {
+            try
+            {
+                //Throws Exception If Field is Null.
+                if(vehicalColor == null)
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
+                }
+                
+                //Throws Exception If Field is Empty.
+                if (vehicalColor == "")
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.EMPTY_FIELD_EXCEPTION.ToString());
+                }
+
+                return this.parkingLotRL.GetVehicalDetailsByColor(vehicalColor);
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
     }
 }

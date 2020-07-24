@@ -40,5 +40,6 @@ namespace RepositoryLayer.Interface
         /// <returns></returns>
 
         ParkingDetails GetVehicalByNumber(string vehicalNumber);
+        List<ParkingDetails> GetVehicalDetailsByColor(string vehicalColor);
     }
 }

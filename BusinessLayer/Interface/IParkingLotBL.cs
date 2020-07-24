@@ -33,5 +33,12 @@ namespace BusinessLayer.Interface
         /// <param name="vehicalNumber"></param>
         /// <returns></returns>
         ParkingDetails GetVehicalByNumber(string vehicalNumber);
+        
+        /// <summary>
+        /// Abstract Function For Get Vehicals info By Color Implementation.
+        /// </summary>
+        /// <param name="vehicalColor"></param>
+        /// <returns></returns>
+        List<ParkingDetails> GetVehicalDetailsByColor(string vehicalColor);
     }
 }

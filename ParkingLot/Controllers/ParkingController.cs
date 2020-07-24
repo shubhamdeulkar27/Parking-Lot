@@ -139,7 +139,7 @@ namespace ParkingLot.Controllers
                 ParkingDetails details = this.parkingLotBL.GetVehicalByNumber(VehicalNumber);
                 if(details!=null && details.Status == "Parked")
                 {
-                    return Ok(new { Success = true, Message = "Car Details Fetched Successful", Data = details.ParkingSlot });
+                    return Ok(new { Success = true, Message = "Car Details Fetched Successful", Data = details });
                 }
                 else if (details !=null && details.Status == "Unparked")
                 {
@@ -151,6 +151,34 @@ namespace ParkingLot.Controllers
                 }
             }
             catch(Exception exception)
+            {
+                return BadRequest(new { Success = false, Message = exception.Message });
+            }
+        }
+
+        /// <summary>
+        /// Function To Find Vehicals By Color.
+        /// </summary>
+        /// <param name="Color"></param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet]
+        [Route("GetByColor/{Color}")]
+        public IActionResult GetVehicalDetailsByColor([FromRoute] string Color)
+        {
+            try
+            {
+                var list = this.parkingLotBL.GetVehicalDetailsByColor(Color);
+                if (list != null)
+                {
+                    return Ok(new { Success = true, Message = "Vehical Details Fetched Successful", Data = list });
+                }
+                else
+                {
+                    return NotFound(new { Success = false, Message = "No Car Found" });
+                }
+            }
+            catch (Exception exception)
             {
                 return BadRequest(new { Success = false, Message = exception.Message });
             }

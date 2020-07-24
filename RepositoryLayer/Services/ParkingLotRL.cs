@@ -246,5 +246,33 @@ namespace RepositoryLayer.Services
                 throw exception;
             }
         }
+
+        /// <summary>
+        /// Function For Getting List Of Vehicals Of Specified Color.
+        /// </summary>
+        /// <param name="vehicalColor"></param>
+        /// <returns></returns>
+        public List<ParkingDetails> GetVehicalDetailsByColor(string vehicalColor)
+        {
+            try 
+            {
+                if(dBContext.ParkingDetails.Any(x => x.Color == vehicalColor))
+                {
+                    var data = (from ParkingDetails in dBContext.ParkingDetails
+                                where ParkingDetails.Color == vehicalColor
+                                && ParkingDetails.Status == "Parked"
+                                select ParkingDetails).ToList();
+                    return data;
+                }
+                else 
+                {
+                    return null;
+                }
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
     }
 }
