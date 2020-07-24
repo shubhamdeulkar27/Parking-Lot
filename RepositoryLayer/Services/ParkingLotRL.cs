@@ -204,5 +204,24 @@ namespace RepositoryLayer.Services
                 throw exception;
             }
         }
+
+        /// <summary>
+        /// Function To Find Vehical By Number.
+        /// </summary>
+        /// <param name="vehicalNumber"></param>
+        /// <returns></returns>
+        public ParkingDetails GetVehicalByNumber(string VehicalNumber)
+        {
+            try
+            {
+                ParkingDetails vehicalExists = dBContext.ParkingDetails.Where<ParkingDetails>
+                    (p => p.VehicalNumber.Equals(VehicalNumber)).FirstOrDefault();
+                return vehicalExists;
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
     }
 }

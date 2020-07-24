@@ -123,5 +123,37 @@ namespace ParkingLot.Controllers
                 return BadRequest(new { Success = false, Message = exception.Message });
             }
         }
+
+        /// <summary>
+        /// Function To Find Vehical By Number.
+        /// </summary>
+        /// <param name="VehicalNumber"></param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet]
+        [Route("FindByNumber/{VehicalNumber}")]
+        public IActionResult GetVehicalByNumber([FromRoute] string VehicalNumber)
+        {
+            try
+            {
+                ParkingDetails details = this.parkingLotBL.GetVehicalByNumber(VehicalNumber);
+                if(details!=null && details.Status == "Parked")
+                {
+                    return Ok(new { Success = true, Message = "Car Details Fetched Successful", Data = details.ParkingSlot });
+                }
+                else if (details !=null && details.Status == "Unparked")
+                {
+                    return NotFound(new { Success = false, Message = "Car Already Unparked" });
+                }
+                else
+                {
+                    return NotFound(new { Success = false, Message = "Car Not Found" });
+                }
+            }
+            catch(Exception exception)
+            {
+                return BadRequest(new { Success = false, Message = exception.Message });
+            }
+        }
     }
 }

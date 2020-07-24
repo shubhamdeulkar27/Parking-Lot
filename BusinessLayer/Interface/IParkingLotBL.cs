@@ -26,5 +26,12 @@ namespace BusinessLayer.Interface
         /// </summary>
         /// <returns></returns>
         bool CheckLotStatus();
+
+        /// <summary>
+        /// Abstract Function For Find Vehical By Number Implementation.
+        /// </summary>
+        /// <param name="vehicalNumber"></param>
+        /// <returns></returns>
+        ParkingDetails GetVehicalByNumber(string vehicalNumber);
     }
 }
