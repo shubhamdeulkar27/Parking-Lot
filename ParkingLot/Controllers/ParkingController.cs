@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BusinessLayer.Interface;
 using CommonLayer.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,6 +36,7 @@ namespace ParkingLot.Controllers
         /// </summary>
         /// <param name="parkingDetails"></param>
         /// <returns></returns>
+        [Authorize]
         [HttpPost]
         [Route("Park")]
         public IActionResult Park([FromBody]ParkingDetails parkingDetails)
@@ -67,6 +69,7 @@ namespace ParkingLot.Controllers
         /// </summary>
         /// <param name="VehicalNumber"></param>
         /// <returns></returns>
+        [Authorize]
         [HttpPost]
         [Route("Unpark/{VehicalNumber}")]
         public IActionResult Unpark([FromRoute] string VehicalNumber)
@@ -97,6 +100,7 @@ namespace ParkingLot.Controllers
         /// Function For Checking Parking Lot Status.
         /// </summary>
         /// <returns></returns>
+        [Authorize(Roles ="Admin, Owner, Security")]
         [HttpGet]
         [Route("LotStatus")]
         public IActionResult CheckLotStatus()
