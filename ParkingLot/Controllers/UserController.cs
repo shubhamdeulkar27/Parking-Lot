@@ -44,7 +44,7 @@ namespace ParkingLot.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        [Authorize(Roles = "Admin, Owner")]
+        [AllowAnonymous]
         [HttpPost]
         [Route("Registration")]
         public IActionResult RegisterUser([FromBody] User user)
