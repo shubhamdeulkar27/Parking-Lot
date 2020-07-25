@@ -212,7 +212,7 @@ namespace ParkingLot.Controllers
             }
         }
 
-                /// <summary>
+        /// <summary>
         /// Function To Find Vehicals By Color and Brand.
         /// </summary>
         /// <param name="Brand"></param>
@@ -225,6 +225,33 @@ namespace ParkingLot.Controllers
             try
             {
                 var list = this.parkingLotBL.GetVehicalDetailsByBrandAndColor(Brand,Color);
+                if (list != null)
+                {
+                    return Ok(new { Success = true, Message = "Vehical Details Fetched Successful", Data = list });
+                }
+                else
+                {
+                    return NotFound(new { Success = false, Message = "No Car Found" });
+                }
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(new { Success = false, Message = exception.Message });
+            }
+        }
+
+        /// <summary>
+        /// Function To Find Vehicals Of Handicap Drivers.
+        /// </summary>
+        /// <returns></returns>
+        [Authorize(Roles = "Admin, Police, Security")]
+        [HttpGet]
+        [Route("GetHandicapBySlot/{Slot}")]
+        public IActionResult GetHandicapVehicalBySlot( [FromRoute]string Slot)
+        {
+            try
+            {
+                var list = this.parkingLotBL.GetHandicapVehicalBySlot(Slot);
                 if (list != null)
                 {
                     return Ok(new { Success = true, Message = "Vehical Details Fetched Successful", Data = list });

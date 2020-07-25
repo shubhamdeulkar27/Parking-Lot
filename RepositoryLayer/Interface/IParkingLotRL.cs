@@ -62,5 +62,12 @@ namespace RepositoryLayer.Interface
         /// <param name="color"></param>
         /// <returns></returns>
         List<ParkingDetails> GetVehicalDetailsByBrandAndColor(string brand, string color);
+
+        /// <summary>
+        /// Abstract function for Get Handicap Vehical By Slot.
+        /// </summary>
+        /// <param name="slot"></param>
+        /// <returns></returns>
+        List<ParkingDetails> GetHandicapVehicalBySlot(string slot);
     }
 }

@@ -13,7 +13,8 @@ namespace CommonLayer.CustomExceptions
         {
             NULL_FIELD_EXCEPTION,
             EMPTY_FIELD_EXCEPTION,
-            INVALID_VEHICAL_NUMBER_FORMAT
+            INVALID_VEHICAL_NUMBER_FORMAT,
+            INVALID_SLOT_EXCEPTION
         }
 
         /// <summary>

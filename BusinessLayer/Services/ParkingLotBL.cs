@@ -220,5 +220,44 @@ namespace BusinessLayer.Services
                 throw exception;
             }
         }
+
+        /// <summary>
+        /// Function for Get Handicap Vehical By Slot.
+        /// </summary>
+        /// <param name="slot"></param>
+        /// <returns></returns>
+        public List<ParkingDetails> GetHandicapVehicalBySlot(string slot)
+        {
+            try
+            {
+                //Throw Exception When Field is Null.
+                if (slot == null)
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
+                }
+
+                //Throw Exception When Field is Empty.
+                if (slot == "")
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.EMPTY_FIELD_EXCEPTION.ToString());
+                }
+
+                //If slot is invalid should throw exception.
+                if(string.Equals(slot,"A") || string.Equals(slot, "B") || string.Equals(slot, "C") || string.Equals(slot, "D"))
+                {
+                    return this.parkingLotRL.GetHandicapVehicalBySlot(slot);
+                }
+                else
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.INVALID_SLOT_EXCEPTION.ToString());
+                }
+
+
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
     }
 }

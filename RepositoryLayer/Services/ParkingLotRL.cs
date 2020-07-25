@@ -313,7 +313,7 @@ namespace RepositoryLayer.Services
         {
             try
             {
-                if (dBContext.ParkingDetails.Any(x => x.Brand == brand && x.Color == color))
+                if (dBContext.ParkingDetails.Any(p => p.Brand == brand && p.Color == color))
                 {
                     var data = (from ParkingDetails in dBContext.ParkingDetails
                                 where ParkingDetails.Brand == brand
@@ -326,6 +326,36 @@ namespace RepositoryLayer.Services
                 {
                     return null;
                 }
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+        }
+
+        /// <summary>
+        /// Function to get handicap vehical details by slot.
+        /// </summary>
+        /// <param name="slot"></param>
+        /// <returns></returns>
+        public List<ParkingDetails> GetHandicapVehicalBySlot(string slot)
+        {
+            try
+            {
+                if(dBContext.ParkingDetails.Any<ParkingDetails>(p=> p.ParkingSlot == slot))
+                {
+                    var data = (from ParkingDetails in dBContext.ParkingDetails
+                                where ParkingDetails.ParkingSlot == slot
+                                && ParkingDetails.IsHandicap == true
+                                && ParkingDetails.Status == "Parked"
+                                select ParkingDetails).ToList();
+                    return data;
+                }
+                else
+                {
+                    return null;
+                }
+
             }
             catch (Exception exception)
             {
