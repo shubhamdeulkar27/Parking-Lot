@@ -259,5 +259,21 @@ namespace BusinessLayer.Services
                 throw exception;
             }
         }
+
+        /// <summary>
+        /// Function to Get All Vehical Details.
+        /// </summary>
+        /// <returns></returns>
+        public List<ParkingDetails> GetAllDetails()
+        {
+            try
+            {
+                return this.parkingLotRL.GetAllDetails();
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
     }
 }

@@ -69,5 +69,12 @@ namespace RepositoryLayer.Interface
         /// <param name="slot"></param>
         /// <returns></returns>
         List<ParkingDetails> GetHandicapVehicalBySlot(string slot);
+
+        /// <summary>
+        /// Abstract Funtion For Get All Vehicals Info.
+        /// </summary>
+        /// <returns></returns>
+        List<ParkingDetails> GetAllDetails();
+
     }
 }

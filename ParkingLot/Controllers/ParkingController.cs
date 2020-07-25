@@ -266,5 +266,32 @@ namespace ParkingLot.Controllers
                 return BadRequest(new { Success = false, Message = exception.Message });
             }
         }
+
+        /// <summary>
+        /// Function To Get All Vehicals.
+        /// </summary>
+        /// <returns></returns>
+        [Authorize(Roles = "Admin, Police, Security")]
+        [HttpGet]
+        [Route("GetALLVehicals")]
+        public IActionResult GetAllDetails()
+        {
+            try
+            {
+                List<ParkingDetails> list = this.parkingLotBL.GetAllDetails();
+                if (list != null)
+                {
+                    return Ok(new { Success = true, Message = "Vehical Details Fetched Successful", Data = list });
+                }
+                else
+                {
+                    return NotFound(new { Success = false, Message = "No Car Found" });
+                }
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(new { Success = false, Message = exception.Message });
+            }
+        }
     }
 }

@@ -362,5 +362,32 @@ namespace RepositoryLayer.Services
                 throw exception;
             }
         }
+
+        /// <summary>
+        /// Function to get all vehicals details.
+        /// </summary>
+        /// <returns></returns>
+        public List<ParkingDetails> GetAllDetails()
+        {
+            try
+            {
+                if (dBContext.ParkingDetails.Any<ParkingDetails>(p=> p.Status == "Parked"))
+                {
+                    var data = (from ParkingDetails in dBContext.ParkingDetails
+                                where ParkingDetails.Status == "Parked"
+                                select ParkingDetails).ToList();
+                    return data;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+        }
     }
 }
