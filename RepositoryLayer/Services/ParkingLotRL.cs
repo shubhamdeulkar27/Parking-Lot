@@ -46,7 +46,7 @@ namespace RepositoryLayer.Services
             {
                 //Checks If Vehical Is Already Parked.
                 var parkingDetailsExists = dBContext.ParkingDetails.Where<ParkingDetails>
-                    (p=> p.VehicalNumber.Equals(parkingDetails.VehicalNumber)).FirstOrDefault();
+                    (p=> p.VehicalNumber.Equals(parkingDetails.VehicalNumber) && p.Brand.Equals(parkingDetails.Brand)).FirstOrDefault();
 
                 if (parkingDetailsExists == null)
                 {
@@ -82,6 +82,7 @@ namespace RepositoryLayer.Services
                         parkingDetailsExists.ParkingDate = DateTime.Now;
                         parkingDetailsExists.TotalTime = 0;
                         parkingDetailsExists.TotalAmount = 0;
+                        parkingDetailsExists.DriverName = parkingDetails.DriverName;
 
                         //Updating DataBase With The Data.
                         //dBContext.ParkingDetails.Add(parkingDetails);

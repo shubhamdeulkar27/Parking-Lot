@@ -34,9 +34,19 @@ namespace RepositoryLayer.Services
         /// <returns></returns>
         public User RegisterUser(User user)
         {
-            try 
+            try
             {
-                var userObject = dBContext.Users.Where<User>(u => u.UserName.Equals(user.UserName) || u.Role.Equals(user.Role) || u.Email.Equals(user.Email)).FirstOrDefault();
+                User userObject;
+                if (user.Role.Equals("Driver"))
+                {
+                    userObject = dBContext.Users.Where<User>(u => u.UserName.Equals(user.UserName) || u.Email.Equals(user.Email)).FirstOrDefault();
+                }
+                else
+                {
+                    userObject = dBContext.Users.Where<User>(u => u.UserName.Equals(user.UserName) || u.Role.Equals(user.Role) || u.Email.Equals(user.Email)).FirstOrDefault();
+                }
+
+                //If User Not Found In Database then adds the user.
                 if (userObject == null)
                 {
                     dBContext.Users.Add(user);

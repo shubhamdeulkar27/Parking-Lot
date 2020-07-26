@@ -32,7 +32,6 @@ namespace CommonLayer.Models
         public string Color { get; set; }
 
         [RegularExpression(@"^[A-Z][a-zA-Z]*$", ErrorMessage = "First Letter Must Be Capital")]
-        [Required(ErrorMessage = "Please Enter Driver Name")]
         public string DriverName { get; set; }
 
         public string ParkingSlot { get; set; }

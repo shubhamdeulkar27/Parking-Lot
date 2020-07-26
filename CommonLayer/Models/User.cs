@@ -14,9 +14,12 @@ namespace CommonLayer.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        
-        [Required(ErrorMessage ="Username Required")]
+
+        [Required(ErrorMessage = "Username Required")]
         public string UserName { get; set; }
+
+        [RegularExpression(@"^[A-Z][a-zA-Z]*$", ErrorMessage = "First Letter Must Be Capital")]
+        public string Name { get; set; }
 
         [EmailAddress]
         public string Email { get; set; }

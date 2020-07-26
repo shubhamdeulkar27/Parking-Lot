@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepositoryLayer.DBContext;
 
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ParkingLotDBContext))]
-    partial class ParkingLotDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200726040151_UserModelNameUpdateMigration")]
+    partial class UserModelNameUpdateMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

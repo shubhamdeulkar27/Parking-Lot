@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using BusinessLayer.Interface;
 using CommonLayer.Models;
@@ -43,6 +44,9 @@ namespace ParkingLot.Controllers
         {
             try
             {
+                var identity = HttpContext.User.Identity as ClaimsIdentity;
+                parkingDetails.DriverName = identity.Name;
+                
                 var parkResponse = this.parkingLotBL.Park(parkingDetails);
                 if(parkResponse != null && parkResponse.ParkingSlot != "Unavailable")
                 {
