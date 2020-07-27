@@ -143,7 +143,7 @@ namespace ParkingLot.Controllers
                 ParkingDetails details = this.parkingLotBL.GetVehicalByNumber(VehicalNumber);
                 if(details!=null && details.Status == "Parked")
                 {
-                    return Ok(new { Success = true, Message = "Car Details Fetched Successful", Data = details });
+                    return Ok(new { Success = true, Message = "Vehical Details Fetched Successful", Data = details });
                 }
                 else if (details !=null && details.Status == "Unparked")
                 {
