@@ -1,0 +1,9 @@
+C:\Users\hp\source\repos\Parking-Lot\CommonLayer\bin\MCD\Debug\netcoreapp2.1\CommonLayer.deps.json
+C:\Users\hp\source\repos\Parking-Lot\CommonLayer\bin\MCD\Debug\netcoreapp2.1\CommonLayer.dll
+C:\Users\hp\source\repos\Parking-Lot\CommonLayer\bin\MCD\Debug\netcoreapp2.1\CommonLayer.pdb
+C:\Users\hp\source\repos\Parking-Lot\CommonLayer\obj\MCD\Debug\netcoreapp2.1\CommonLayer.csprojAssemblyReference.cache
+C:\Users\hp\source\repos\Parking-Lot\CommonLayer\obj\MCD\Debug\netcoreapp2.1\CommonLayer.csproj.CoreCompileInputs.cache
+C:\Users\hp\source\repos\Parking-Lot\CommonLayer\obj\MCD\Debug\netcoreapp2.1\CommonLayer.AssemblyInfoInputs.cache
+C:\Users\hp\source\repos\Parking-Lot\CommonLayer\obj\MCD\Debug\netcoreapp2.1\CommonLayer.AssemblyInfo.cs
+C:\Users\hp\source\repos\Parking-Lot\CommonLayer\obj\MCD\Debug\netcoreapp2.1\CommonLayer.dll
+C:\Users\hp\source\repos\Parking-Lot\CommonLayer\obj\MCD\Debug\netcoreapp2.1\CommonLayer.pdb

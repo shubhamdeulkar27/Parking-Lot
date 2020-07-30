@@ -1,0 +1,12 @@
+C:\Users\hp\source\repos\Parking-Lot\RepositoryLayer\bin\MCD\Debug\netcoreapp2.1\RepositoryLayer.deps.json
+C:\Users\hp\source\repos\Parking-Lot\RepositoryLayer\bin\MCD\Debug\netcoreapp2.1\RepositoryLayer.dll
+C:\Users\hp\source\repos\Parking-Lot\RepositoryLayer\bin\MCD\Debug\netcoreapp2.1\RepositoryLayer.pdb
+C:\Users\hp\source\repos\Parking-Lot\RepositoryLayer\bin\MCD\Debug\netcoreapp2.1\CommonLayer.dll
+C:\Users\hp\source\repos\Parking-Lot\RepositoryLayer\bin\MCD\Debug\netcoreapp2.1\CommonLayer.pdb
+C:\Users\hp\source\repos\Parking-Lot\RepositoryLayer\obj\MCD\Debug\netcoreapp2.1\RepositoryLayer.csprojAssemblyReference.cache
+C:\Users\hp\source\repos\Parking-Lot\RepositoryLayer\obj\MCD\Debug\netcoreapp2.1\RepositoryLayer.csproj.CoreCompileInputs.cache
+C:\Users\hp\source\repos\Parking-Lot\RepositoryLayer\obj\MCD\Debug\netcoreapp2.1\RepositoryLayer.AssemblyInfoInputs.cache
+C:\Users\hp\source\repos\Parking-Lot\RepositoryLayer\obj\MCD\Debug\netcoreapp2.1\RepositoryLayer.AssemblyInfo.cs
+C:\Users\hp\source\repos\Parking-Lot\RepositoryLayer\obj\MCD\Debug\netcoreapp2.1\RepositoryLayer.csproj.CopyComplete
+C:\Users\hp\source\repos\Parking-Lot\RepositoryLayer\obj\MCD\Debug\netcoreapp2.1\RepositoryLayer.dll
+C:\Users\hp\source\repos\Parking-Lot\RepositoryLayer\obj\MCD\Debug\netcoreapp2.1\RepositoryLayer.pdb

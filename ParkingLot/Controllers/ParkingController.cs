@@ -37,7 +37,7 @@ namespace ParkingLot.Controllers
         /// </summary>
         /// <param name="parkingDetails"></param>
         /// <returns></returns>
-        [Authorize(Roles= "Admin, Driver, Attendant ")]
+        [Authorize(Roles = "Admin, Driver, Attendant ")]
         [HttpPost]
         [Route("Park")]
         public IActionResult Park([FromBody]ParkingDetails parkingDetails)
@@ -106,7 +106,7 @@ namespace ParkingLot.Controllers
         /// <returns></returns>
         [Authorize(Roles ="Admin, Owner, Security")]
         [HttpGet]
-        [Route("LotStatus")]
+        [Route("IsSlotAvialble")]
         public IActionResult CheckLotStatus()
         { 
             try
@@ -135,7 +135,7 @@ namespace ParkingLot.Controllers
         /// <returns></returns>
         [Authorize(Roles ="Admin, Driver")]
         [HttpGet]
-        [Route("FindByNumber/{VehicalNumber}")]
+        [Route("Vehical/{VehicalNumber}")]
         public IActionResult GetVehicalByNumber([FromRoute] string VehicalNumber)
         {
             try
@@ -167,7 +167,7 @@ namespace ParkingLot.Controllers
         /// <returns></returns>
         [Authorize(Roles ="Admin, Police, Security, Owner")]
         [HttpGet]
-        [Route("GetByColor/{Color}")]
+        [Route("Vehicals/{Color}")]
         public IActionResult GetVehicalDetailsByColor([FromRoute] string Color)
         {
             try
@@ -195,7 +195,7 @@ namespace ParkingLot.Controllers
         /// <returns></returns>
         [Authorize(Roles = "Admin, Police, Security, Owner")]
         [HttpGet]
-        [Route("GetByBrand/{Brand}")]
+        [Route("Vehicals/{Brand}")]
         public IActionResult GetVehicalDetailsByBrand([FromRoute] string Brand)
         {
             try
@@ -223,7 +223,7 @@ namespace ParkingLot.Controllers
         /// <returns></returns>
         [Authorize(Roles = "Admin, Police, Security")]
         [HttpGet]
-        [Route("GetByBrandAndColor/{Brand}/{Color}")]
+        [Route("Vehicals/{Brand}/{Color}")]
         public IActionResult GetVehicalDetailsByBrandAndColor([FromRoute] string Brand, [FromRoute] string Color)
         {
             try
@@ -250,7 +250,7 @@ namespace ParkingLot.Controllers
         /// <returns></returns>
         [Authorize(Roles = "Admin, Police, Security")]
         [HttpGet]
-        [Route("GetHandicapBySlot/{Slot}")]
+        [Route("Vehicals/{Slot}")]
         public IActionResult GetHandicapVehicalBySlot( [FromRoute]string Slot)
         {
             try
@@ -277,7 +277,7 @@ namespace ParkingLot.Controllers
         /// <returns></returns>
         [Authorize(Roles = "Admin, Police, Security")]
         [HttpGet]
-        [Route("GetALLVehicals")]
+        [Route("Vehicals")]
         public IActionResult GetAllDetails()
         {
             try
