@@ -19,6 +19,9 @@ namespace CommonLayer.Models
         [Required(ErrorMessage ="Please Enter Owner Name")]
         public string VehicalOwnerName { get; set; }
 
+        [EmailAddress]
+        public string VehicalOwnerEmail { get; set; }
+
         [RegularExpression(@"^[A-Z]{2}\s[0-9]{2}\s[A-Z]{1,2}\s[0-9]{4}$",ErrorMessage ="Please Enter Vehical Number Like 'MH 01 AB 1111'")]
         [Required(ErrorMessage = "Please Enter The Vehical Number")]
         public string VehicalNumber { get; set; }
