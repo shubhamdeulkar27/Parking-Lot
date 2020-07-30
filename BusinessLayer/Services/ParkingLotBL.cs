@@ -37,20 +37,6 @@ namespace BusinessLayer.Services
         {
             try
             {
-                //Throws Custom Exception If Fields are Null.
-                if(parkingDetails.VehicalOwnerName==null || parkingDetails.VehicalNumber==null ||
-                    parkingDetails.Brand==null || parkingDetails.Color==null || parkingDetails.DriverName==null)
-                {
-                    throw new Exception(ParkingLotExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
-                }
-
-                //Throws Custom Exception If Fields are Empty.
-                if (parkingDetails.VehicalOwnerName == "" || parkingDetails.VehicalNumber == "" ||
-                    parkingDetails.Brand == "" || parkingDetails.Color == "" || parkingDetails.DriverName == "")
-                {
-                    throw new Exception(ParkingLotExceptions.ExceptionType.EMPTY_FIELD_EXCEPTION.ToString());
-                }
-
                 return this.parkingLotRL.Park(parkingDetails);
             }
             catch(Exception exception)

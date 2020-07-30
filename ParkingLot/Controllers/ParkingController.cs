@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using BusinessLayer.Interface;
+using CommonLayer.CustomExceptions;
 using CommonLayer.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -44,10 +45,27 @@ namespace ParkingLot.Controllers
         {
             try
             {
+                //Fetching Claim Form JWT.
                 var identity = HttpContext.User.Identity as ClaimsIdentity;
                 parkingDetails.DriverName = identity.Name;
-                
+
+                //Throws Custom Exception If Fields are Null.
+                if (parkingDetails.VehicalOwnerName == null || parkingDetails.VehicalNumber == null ||
+                    parkingDetails.Brand == null || parkingDetails.Color == null || parkingDetails.DriverName == null)
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
+                }
+
+                //Throws Custom Exception If Fields are Empty.
+                if (parkingDetails.VehicalOwnerName == "" || parkingDetails.VehicalNumber == "" ||
+                    parkingDetails.Brand == "" || parkingDetails.Color == "" || parkingDetails.DriverName == "")
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.EMPTY_FIELD_EXCEPTION.ToString());
+                }
+
+                //Calling BL.
                 var parkResponse = this.parkingLotBL.Park(parkingDetails);
+                
                 if(parkResponse != null && parkResponse.ParkingSlot != "Unavailable")
                 {
                     return Ok(new { Success = true, Message = "Vehical Parked", Data = parkResponse });
