@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using BusinessLayer.Interface;
+using CommonLayer.CustomExceptions;
 using CommonLayer.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -51,7 +52,33 @@ namespace ParkingLot.Controllers
         {
             try
             {
-                User responseUser = userBL.RegisterUser(user);
+                //Null Instace For UserResponse.
+                User responseUser = null;
+
+                //Throws Custom Exception When Fields are Null.
+                if (user.UserName == null || user.Role == null || user.Password == null || user.Email == null)
+                {
+                    throw new Exception(UserExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
+                }
+
+                //Throws Custom Exception When Fields are Empty Strings.
+                if (user.UserName == "" || user.Role == "" || user.Password == "" || user.Email == "")
+                {
+                    throw new Exception(UserExceptions.ExceptionType.EMPTY_FIELD_EXCEPTION.ToString());
+                }
+
+                //Throws Custom Exception When Role is Invalid.
+                if (user.Role.Equals(Roles.Admin.ToString()) || user.Role.Equals(Roles.Driver.ToString()) ||
+                   user.Role.Equals(Roles.Police.ToString()) || user.Role.Equals(Roles.Security.ToString()) ||
+                   user.Role.Equals(Roles.Owner.ToString()) || user.Role.Equals(Roles.Attendant.ToString()))
+                {
+                    responseUser = userBL.RegisterUser(user);
+                }
+                else
+                {
+                    throw new Exception(UserExceptions.ExceptionType.INVALID_USER_ROLE_EXCEPTION.ToString());
+                }
+
                 if(responseUser!=null)
                 {
                     return Ok(new { Success = true, Message = "Registration Successfull", Data = responseUser.UserName });
@@ -79,6 +106,18 @@ namespace ParkingLot.Controllers
         {
             try
             {
+                //Throws Custom Exception When Fields are Null.
+                if (user.UserName == null || user.Password == null)
+                {
+                    throw new Exception(UserExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
+                }
+
+                //Throws Custom Exception When Fields are Empty Strings.
+                if (user.UserName == "" || user.Password == "")
+                {
+                    throw new Exception(UserExceptions.ExceptionType.EMPTY_FIELD_EXCEPTION.ToString());
+                }
+
                 User responseUser = userBL.LoginUser(user);
                 if (responseUser != null)
                 {

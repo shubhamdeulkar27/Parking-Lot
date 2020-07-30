@@ -56,30 +56,8 @@ namespace BusinessLayer.Services
         {
             try
             {
-                //Throws Custom Exception When Fields are Null.
-                if (user.UserName == null || user.Role == null || user.Password == null || user.Email == null)
-                {
-                    throw new Exception(UserExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
-                }
-
-                //Throws Custom Exception When Fields are Empty Strings.
-                if (user.UserName == ""  || user.Role == "" || user.Password == "" || user.Email == "")
-                {
-                    throw new Exception(UserExceptions.ExceptionType.EMPTY_FIELD_EXCEPTION.ToString());
-                }
-
-                //Throws Custom Exception When Role is Invalid.
-                if (user.Role.Equals(Roles.Admin.ToString()) || user.Role.Equals(Roles.Driver.ToString()) ||
-                   user.Role.Equals(Roles.Police.ToString()) || user.Role.Equals(Roles.Security.ToString()) ||
-                   user.Role.Equals(Roles.Owner.ToString()) || user.Role.Equals(Roles.Attendant.ToString()))
-                {
-                    user.Password = EncodePasswordToBase64(user.Password);
-                    return this.userRL.RegisterUser(user);
-                }
-                else 
-                { 
-                    throw new Exception(UserExceptions.ExceptionType.INVALID_USER_ROLE_EXCEPTION.ToString()); 
-                }
+                user.Password = EncodePasswordToBase64(user.Password);
+                return this.userRL.RegisterUser(user);
             }
             catch(Exception exception)
             {
@@ -96,18 +74,6 @@ namespace BusinessLayer.Services
         {
             try
             {
-                //Throws Custom Exception When Fields are Null.
-                if (user.UserName == null || user.Password == null)
-                {
-                    throw new Exception(UserExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
-                }
-
-                //Throws Custom Exception When Fields are Empty Strings.
-                if (user.UserName == "" || user.Password == "")
-                {
-                    throw new Exception(UserExceptions.ExceptionType.EMPTY_FIELD_EXCEPTION.ToString());
-                }
-
                 user.Password = EncodePasswordToBase64(user.Password);
                 return this.userRL.LoginUser(user);
             }
