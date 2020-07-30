@@ -87,6 +87,13 @@ namespace ParkingLot
                         new string[]{}
                     }
                 });
+
+                services.AddDistributedRedisCache(options=> 
+                {
+                    options.Configuration = Configuration.GetConnectionString("RedisConnectionString");
+                    options.InstanceName = "master";
+                });
+
             });
         }
 

@@ -10,7 +10,6 @@ C:\Users\hp\source\repos\Parking-Lot\ParkingLot\bin\Debug\netcoreapp2.1\Business
 C:\Users\hp\source\repos\Parking-Lot\ParkingLot\bin\Debug\netcoreapp2.1\RepositoryLayer.pdb
 C:\Users\hp\source\repos\Parking-Lot\ParkingLot\bin\Debug\netcoreapp2.1\CommonLayer.pdb
 C:\Users\hp\source\repos\Parking-Lot\ParkingLot\obj\Debug\netcoreapp2.1\ParkingLot.csprojAssemblyReference.cache
-C:\Users\hp\source\repos\Parking-Lot\ParkingLot\obj\Debug\netcoreapp2.1\ParkingLot.csproj.CoreCompileInputs.cache
 C:\Users\hp\source\repos\Parking-Lot\ParkingLot\obj\Debug\netcoreapp2.1\ParkingLot.RazorAssemblyInfo.cache
 C:\Users\hp\source\repos\Parking-Lot\ParkingLot\obj\Debug\netcoreapp2.1\ParkingLot.RazorAssemblyInfo.cs
 C:\Users\hp\source\repos\Parking-Lot\ParkingLot\obj\Debug\netcoreapp2.1\ParkingLot.AssemblyInfoInputs.cache
