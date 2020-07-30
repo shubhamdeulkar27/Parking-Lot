@@ -87,18 +87,6 @@ namespace BusinessLayer.Services
         {
             try
             {
-                //Throws Custom Exception If VehicalNumber Is Null;
-                if (VehicalNumber == null)
-                {
-                    throw new Exception(ParkingLotExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
-                }
-
-                //Throws Custom Exception If VehicalNumber Is Not in Valid Format.
-                if (!Regex.IsMatch(VehicalNumber, @"^[A-Z]{2}\s[0-9]{2}\s[A-Z]{1,2}\s[0-9]{4}$"))
-                {
-                    throw new Exception(ParkingLotExceptions.ExceptionType.INVALID_VEHICAL_NUMBER_FORMAT.ToString() + " Please Enter Vehical In 'MH 01 AZ 2005' This Format.");
-                }
-
                 return this.parkingLotRL.GetVehicalByNumber(VehicalNumber);
             }
             catch(Exception exception)
@@ -116,18 +104,6 @@ namespace BusinessLayer.Services
         {
             try
             {
-                //Throws Exception If Field is Null.
-                if(vehicalColor == null)
-                {
-                    throw new Exception(ParkingLotExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
-                }
-                
-                //Throws Exception If Field is Empty.
-                if (vehicalColor == "")
-                {
-                    throw new Exception(ParkingLotExceptions.ExceptionType.EMPTY_FIELD_EXCEPTION.ToString());
-                }
-
                 return this.parkingLotRL.GetVehicalDetailsByColor(vehicalColor);
             }
             catch(Exception exception)
@@ -145,18 +121,6 @@ namespace BusinessLayer.Services
         {
             try
             {
-                //Throw Exception When Field is Null.
-                if(brand==null)
-                {
-                    throw new Exception(ParkingLotExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
-                }
-
-                //Throws Exception when field is empty.
-                if (brand == "")
-                {
-                    throw new Exception(ParkingLotExceptions.ExceptionType.EMPTY_FIELD_EXCEPTION.ToString());
-                }
-
                 return this.parkingLotRL.GetVehicalDetailsByBrand(brand);
             }
             catch(Exception exception)
@@ -175,18 +139,6 @@ namespace BusinessLayer.Services
         {
             try
             {
-                //Throw Exception When Field is Null.
-                if (brand == null || color == null)
-                {
-                    throw new Exception(ParkingLotExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
-                }
-
-                //Throws Exception when field is empty.
-                if (brand == "" || color== "")
-                {
-                    throw new Exception(ParkingLotExceptions.ExceptionType.EMPTY_FIELD_EXCEPTION.ToString());
-                }
-
                 return this.parkingLotRL.GetVehicalDetailsByBrandAndColor(brand,color);
             }
             catch (Exception exception)
@@ -204,29 +156,7 @@ namespace BusinessLayer.Services
         {
             try
             {
-                //Throw Exception When Field is Null.
-                if (slot == null)
-                {
-                    throw new Exception(ParkingLotExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
-                }
-
-                //Throw Exception When Field is Empty.
-                if (slot == "")
-                {
-                    throw new Exception(ParkingLotExceptions.ExceptionType.EMPTY_FIELD_EXCEPTION.ToString());
-                }
-
-                //If slot is invalid should throw exception.
-                if(string.Equals(slot,"A") || string.Equals(slot, "B") || string.Equals(slot, "C") || string.Equals(slot, "D"))
-                {
-                    return this.parkingLotRL.GetHandicapVehicalBySlot(slot);
-                }
-                else
-                {
-                    throw new Exception(ParkingLotExceptions.ExceptionType.INVALID_SLOT_EXCEPTION.ToString());
-                }
-
-
+                return this.parkingLotRL.GetHandicapVehicalBySlot(slot);
             }
             catch(Exception exception)
             {

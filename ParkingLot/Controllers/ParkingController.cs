@@ -171,6 +171,19 @@ namespace ParkingLot.Controllers
         {
             try
             {
+                //Throws Custom Exception If VehicalNumber Is Null;
+                if (VehicalNumber == null)
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
+                }
+
+                //Throws Custom Exception If VehicalNumber Is Not in Valid Format.
+                if (!Regex.IsMatch(VehicalNumber, @"^[A-Z]{2}\s[0-9]{2}\s[A-Z]{1,2}\s[0-9]{4}$"))
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.INVALID_VEHICAL_NUMBER_FORMAT.ToString() + " Please Enter Vehical In 'MH 01 AZ 2005' This Format.");
+                }
+
+                //Calling BL.
                 ParkingDetails details = this.parkingLotBL.GetVehicalByNumber(VehicalNumber);
                 if(details!=null && details.Status == "Parked")
                 {
@@ -203,6 +216,19 @@ namespace ParkingLot.Controllers
         {
             try
             {
+                //Throws Exception If Field is Null.
+                if (Color == null)
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
+                }
+
+                //Throws Exception If Field is Empty.
+                if (Color == "")
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.EMPTY_FIELD_EXCEPTION.ToString());
+                }
+
+                //Calling BL.
                 var list = this.parkingLotBL.GetVehicalDetailsByColor(Color);
                 if (list != null)
                 {
@@ -231,6 +257,19 @@ namespace ParkingLot.Controllers
         {
             try
             {
+                //Throw Exception When Field is Null.
+                if (Brand == null)
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
+                }
+
+                //Throws Exception when field is empty.
+                if (Brand == "")
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.EMPTY_FIELD_EXCEPTION.ToString());
+                }
+
+                //Calling BL.
                 var list = this.parkingLotBL.GetVehicalDetailsByBrand(Brand);
                 if (list != null)
                 {
@@ -259,6 +298,19 @@ namespace ParkingLot.Controllers
         {
             try
             {
+                //Throw Exception When Field is Null.
+                if (Brand == null || Color == null)
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
+                }
+
+                //Throws Exception when field is empty.
+                if (Brand == "" || Color == "")
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.EMPTY_FIELD_EXCEPTION.ToString());
+                }
+
+                //Calling BL.
                 var list = this.parkingLotBL.GetVehicalDetailsByBrandAndColor(Brand,Color);
                 if (list != null)
                 {
@@ -286,7 +338,32 @@ namespace ParkingLot.Controllers
         {
             try
             {
-                var list = this.parkingLotBL.GetHandicapVehicalBySlot(Slot);
+                List<ParkingDetails> list;
+
+                //Throw Exception When Field is Null.
+                if (Slot == null)
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.NULL_FIELD_EXCEPTION.ToString());
+                }
+
+                //Throw Exception When Field is Empty.
+                if (Slot == "")
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.EMPTY_FIELD_EXCEPTION.ToString());
+                }
+
+                //If slot is invalid should throw exception.
+                if (string.Equals(Slot, "A") || string.Equals(Slot, "B") || string.Equals(Slot, "C") || string.Equals(Slot, "D"))
+                {
+                    //Calling BL.
+                    list = this.parkingLotBL.GetHandicapVehicalBySlot(Slot);
+                }
+                else
+                {
+                    throw new Exception(ParkingLotExceptions.ExceptionType.INVALID_SLOT_EXCEPTION.ToString());
+                }
+
+                //Sending Responses.
                 if (list != null)
                 {
                     return Ok(new { Success = true, Message = "Vehical Details Fetched Successful", Data = list });
