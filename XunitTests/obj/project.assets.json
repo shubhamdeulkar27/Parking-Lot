@@ -440,10 +440,10 @@
           "buildMultiTargeting/_._": {}
         }
       },
-      "Microsoft.Extensions.Caching.Abstractions/2.1.0": {
+      "Microsoft.Extensions.Caching.Abstractions/2.1.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "2.1.0"
+          "Microsoft.Extensions.Primitives": "2.1.1"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Caching.Abstractions.dll": {}
@@ -466,20 +466,18 @@
           "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.dll": {}
         }
       },
-      "Microsoft.Extensions.Caching.Redis.Core/1.0.3": {
+      "Microsoft.Extensions.Caching.Redis/2.1.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Caching.Abstractions": "1.0.0",
-          "Microsoft.Extensions.Options": "1.0.0",
-          "StackExchange.Redis.StrongName": "1.1.608",
-          "System.Linq": "4.1.0",
-          "System.Threading": "4.0.11"
+          "Microsoft.Extensions.Caching.Abstractions": "2.1.1",
+          "Microsoft.Extensions.Options": "2.1.1",
+          "StackExchange.Redis.StrongName": "1.2.4"
         },
         "compile": {
-          "lib/netstandard1.5/Microsoft.Extensions.Caching.Redis.dll": {}
+          "lib/netstandard2.0/Microsoft.Extensions.Caching.Redis.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.5/Microsoft.Extensions.Caching.Redis.dll": {}
+          "lib/netstandard2.0/Microsoft.Extensions.Caching.Redis.dll": {}
         }
       },
       "Microsoft.Extensions.Configuration/2.1.0": {
@@ -1214,12 +1212,12 @@
           }
         }
       },
-      "Microsoft.Win32.Primitives/4.0.1": {
+      "Microsoft.Win32.Primitives/4.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.0.1",
-          "Microsoft.NETCore.Targets": "1.0.1",
-          "System.Runtime": "4.1.0"
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0"
         },
         "compile": {
           "ref/netstandard1.3/_._": {}
@@ -1383,11 +1381,11 @@
           "runtime.win-x86.runtime.native.System.Data.SqlClient.sni": "4.4.0"
         }
       },
-      "runtime.native.System.IO.Compression/4.1.0": {
+      "runtime.native.System.IO.Compression/4.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.0.1",
-          "Microsoft.NETCore.Targets": "1.0.1"
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0"
         },
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -1409,24 +1407,11 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "runtime.native.System.Net.Security/4.0.1": {
+      "runtime.native.System.Net.Security/4.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.0.1",
-          "Microsoft.NETCore.Targets": "1.0.1"
-        },
-        "compile": {
-          "lib/netstandard1.0/_._": {}
-        },
-        "runtime": {
-          "lib/netstandard1.0/_._": {}
-        }
-      },
-      "runtime.native.System.Security.Cryptography/4.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.0.1",
-          "Microsoft.NETCore.Targets": "1.0.1"
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0"
         },
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -1567,31 +1552,32 @@
           }
         }
       },
-      "StackExchange.Redis.StrongName/1.1.608": {
+      "StackExchange.Redis.StrongName/1.2.4": {
         "type": "package",
         "dependencies": {
-          "System.Collections": "4.0.11",
-          "System.Collections.Concurrent": "4.0.12",
-          "System.Collections.NonGeneric": "4.0.1",
-          "System.Diagnostics.Tools": "4.0.1",
-          "System.IO.Compression": "4.1.0",
-          "System.IO.FileSystem": "4.0.1",
-          "System.Linq": "4.1.0",
-          "System.Net.NameResolution": "4.0.0",
-          "System.Net.Security": "4.0.0",
-          "System.Net.Sockets": "4.1.0",
-          "System.Reflection.Emit": "4.0.1",
-          "System.Reflection.Emit.Lightweight": "4.0.1",
-          "System.Reflection.TypeExtensions": "4.1.0",
-          "System.Runtime.Extensions": "4.1.0",
-          "System.Runtime.InteropServices.RuntimeInformation": "4.0.0",
-          "System.Security.Cryptography.Algorithms": "4.2.0",
-          "System.Security.Cryptography.X509Certificates": "4.1.0",
-          "System.Text.RegularExpressions": "4.1.0",
-          "System.Threading": "4.0.11",
-          "System.Threading.Thread": "4.0.0",
-          "System.Threading.ThreadPool": "4.0.10",
-          "System.Threading.Timer": "4.0.1"
+          "NETStandard.Library": "1.6.1",
+          "System.Collections": "4.3.0",
+          "System.Collections.Concurrent": "4.3.0",
+          "System.Collections.NonGeneric": "4.3.0",
+          "System.Diagnostics.Tools": "4.3.0",
+          "System.IO.Compression": "4.3.0",
+          "System.IO.FileSystem": "4.3.0",
+          "System.Linq": "4.3.0",
+          "System.Net.NameResolution": "4.3.0",
+          "System.Net.Security": "4.3.0",
+          "System.Net.Sockets": "4.3.0",
+          "System.Reflection.Emit": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Runtime.InteropServices.RuntimeInformation": "4.3.0",
+          "System.Security.Cryptography.Algorithms": "4.3.0",
+          "System.Security.Cryptography.X509Certificates": "4.3.0",
+          "System.Text.RegularExpressions": "4.3.0",
+          "System.Threading": "4.3.0",
+          "System.Threading.Thread": "4.3.0",
+          "System.Threading.ThreadPool": "4.3.0",
+          "System.Threading.Timer": "4.3.0"
         },
         "compile": {
           "lib/netstandard1.5/StackExchange.Redis.StrongName.dll": {}
@@ -2093,23 +2079,24 @@
           "ref/netstandard1.5/System.IO.dll": {}
         }
       },
-      "System.IO.Compression/4.1.0": {
+      "System.IO.Compression/4.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.0.1",
-          "System.Collections": "4.0.11",
-          "System.Diagnostics.Debug": "4.0.11",
-          "System.IO": "4.1.0",
-          "System.Resources.ResourceManager": "4.0.1",
-          "System.Runtime": "4.1.0",
-          "System.Runtime.Extensions": "4.1.0",
-          "System.Runtime.Handles": "4.0.1",
-          "System.Runtime.InteropServices": "4.1.0",
-          "System.Text.Encoding": "4.0.11",
-          "System.Threading": "4.0.11",
-          "System.Threading.Tasks": "4.0.11",
-          "runtime.native.System": "4.0.0",
-          "runtime.native.System.IO.Compression": "4.1.0"
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "System.Buffers": "4.3.0",
+          "System.Collections": "4.3.0",
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Runtime.Handles": "4.3.0",
+          "System.Runtime.InteropServices": "4.3.0",
+          "System.Text.Encoding": "4.3.0",
+          "System.Threading": "4.3.0",
+          "System.Threading.Tasks": "4.3.0",
+          "runtime.native.System": "4.3.0",
+          "runtime.native.System.IO.Compression": "4.3.0"
         },
         "compile": {
           "ref/netstandard1.3/System.IO.Compression.dll": {}
@@ -2225,23 +2212,23 @@
           "lib/netcoreapp2.1/_._": {}
         }
       },
-      "System.Net.NameResolution/4.0.0": {
+      "System.Net.NameResolution/4.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.0.1",
-          "System.Collections": "4.0.11",
-          "System.Diagnostics.Tracing": "4.1.0",
-          "System.Globalization": "4.0.11",
-          "System.Net.Primitives": "4.0.11",
-          "System.Resources.ResourceManager": "4.0.1",
-          "System.Runtime": "4.1.0",
-          "System.Runtime.Extensions": "4.1.0",
-          "System.Runtime.Handles": "4.0.1",
-          "System.Runtime.InteropServices": "4.1.0",
-          "System.Security.Principal.Windows": "4.0.0",
-          "System.Threading": "4.0.11",
-          "System.Threading.Tasks": "4.0.11",
-          "runtime.native.System": "4.0.0"
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "System.Collections": "4.3.0",
+          "System.Diagnostics.Tracing": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.Net.Primitives": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Runtime.Handles": "4.3.0",
+          "System.Runtime.InteropServices": "4.3.0",
+          "System.Security.Principal.Windows": "4.3.0",
+          "System.Threading": "4.3.0",
+          "System.Threading.Tasks": "4.3.0",
+          "runtime.native.System": "4.3.0"
         },
         "compile": {
           "ref/netstandard1.3/System.Net.NameResolution.dll": {}
@@ -2257,49 +2244,49 @@
           }
         }
       },
-      "System.Net.Primitives/4.0.11": {
+      "System.Net.Primitives/4.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.0.1",
-          "Microsoft.NETCore.Targets": "1.0.1",
-          "System.Runtime": "4.1.0",
-          "System.Runtime.Handles": "4.0.1"
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Handles": "4.3.0"
         },
         "compile": {
           "ref/netstandard1.3/System.Net.Primitives.dll": {}
         }
       },
-      "System.Net.Security/4.0.0": {
+      "System.Net.Security/4.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.0.1",
-          "Microsoft.Win32.Primitives": "4.0.1",
-          "System.Collections": "4.0.11",
-          "System.Collections.Concurrent": "4.0.12",
-          "System.Diagnostics.Tracing": "4.1.0",
-          "System.Globalization": "4.0.11",
-          "System.Globalization.Extensions": "4.0.1",
-          "System.IO": "4.1.0",
-          "System.Net.Primitives": "4.0.11",
-          "System.Resources.ResourceManager": "4.0.1",
-          "System.Runtime": "4.1.0",
-          "System.Runtime.Extensions": "4.1.0",
-          "System.Runtime.Handles": "4.0.1",
-          "System.Runtime.InteropServices": "4.1.0",
-          "System.Security.Claims": "4.0.1",
-          "System.Security.Cryptography.Algorithms": "4.2.0",
-          "System.Security.Cryptography.Encoding": "4.0.0",
-          "System.Security.Cryptography.OpenSsl": "4.0.0",
-          "System.Security.Cryptography.Primitives": "4.0.0",
-          "System.Security.Cryptography.X509Certificates": "4.1.0",
-          "System.Security.Principal": "4.0.1",
-          "System.Text.Encoding": "4.0.11",
-          "System.Threading": "4.0.11",
-          "System.Threading.Tasks": "4.0.11",
-          "System.Threading.ThreadPool": "4.0.10",
-          "runtime.native.System": "4.0.0",
-          "runtime.native.System.Net.Security": "4.0.1",
-          "runtime.native.System.Security.Cryptography": "4.0.0"
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.Win32.Primitives": "4.3.0",
+          "System.Collections": "4.3.0",
+          "System.Collections.Concurrent": "4.3.0",
+          "System.Diagnostics.Tracing": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.Globalization.Extensions": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.Net.Primitives": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Runtime.Handles": "4.3.0",
+          "System.Runtime.InteropServices": "4.3.0",
+          "System.Security.Claims": "4.3.0",
+          "System.Security.Cryptography.Algorithms": "4.3.0",
+          "System.Security.Cryptography.Encoding": "4.3.0",
+          "System.Security.Cryptography.OpenSsl": "4.3.0",
+          "System.Security.Cryptography.Primitives": "4.3.0",
+          "System.Security.Cryptography.X509Certificates": "4.3.0",
+          "System.Security.Principal": "4.3.0",
+          "System.Text.Encoding": "4.3.0",
+          "System.Threading": "4.3.0",
+          "System.Threading.Tasks": "4.3.0",
+          "System.Threading.ThreadPool": "4.3.0",
+          "runtime.native.System": "4.3.0",
+          "runtime.native.System.Net.Security": "4.3.0",
+          "runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0"
         },
         "compile": {
           "ref/netstandard1.3/System.Net.Security.dll": {}
@@ -2315,15 +2302,15 @@
           }
         }
       },
-      "System.Net.Sockets/4.1.0": {
+      "System.Net.Sockets/4.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.0.1",
-          "Microsoft.NETCore.Targets": "1.0.1",
-          "System.IO": "4.1.0",
-          "System.Net.Primitives": "4.0.11",
-          "System.Runtime": "4.1.0",
-          "System.Threading.Tasks": "4.0.11"
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.IO": "4.3.0",
+          "System.Net.Primitives": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Threading.Tasks": "4.3.0"
         },
         "compile": {
           "ref/netstandard1.3/System.Net.Sockets.dll": {}
@@ -3084,10 +3071,10 @@
           "lib/netcoreapp2.1/_._": {}
         }
       },
-      "System.Threading.Thread/4.0.0": {
+      "System.Threading.Thread/4.3.0": {
         "type": "package",
         "dependencies": {
-          "System.Runtime": "4.1.0"
+          "System.Runtime": "4.3.0"
         },
         "compile": {
           "ref/netstandard1.3/System.Threading.Thread.dll": {}
@@ -3096,11 +3083,11 @@
           "lib/netstandard1.3/System.Threading.Thread.dll": {}
         }
       },
-      "System.Threading.ThreadPool/4.0.10": {
+      "System.Threading.ThreadPool/4.3.0": {
         "type": "package",
         "dependencies": {
-          "System.Runtime": "4.1.0",
-          "System.Runtime.Handles": "4.0.1"
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Handles": "4.3.0"
         },
         "compile": {
           "ref/netstandard1.3/System.Threading.ThreadPool.dll": {}
@@ -3109,12 +3096,12 @@
           "lib/netstandard1.3/System.Threading.ThreadPool.dll": {}
         }
       },
-      "System.Threading.Timer/4.0.1": {
+      "System.Threading.Timer/4.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.0.1",
-          "Microsoft.NETCore.Targets": "1.0.1",
-          "System.Runtime": "4.1.0"
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0"
         },
         "compile": {
           "ref/netstandard1.2/System.Threading.Timer.dll": {}
@@ -3364,7 +3351,7 @@
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
           "BusinessLayer": "1.0.0",
-          "Microsoft.Extensions.Caching.Redis.Core": "1.0.3",
+          "Microsoft.Extensions.Caching.Redis": "2.1.1",
           "Microsoft.IdentityModel.Tokens": "5.2.0",
           "Microsoft.NETCore.App": "2.1.0",
           "RepositoryLayer": "1.0.0",
@@ -3905,16 +3892,16 @@
         "tools/netcoreapp2.1/GetDocument.Insider.runtimeconfig.json"
       ]
     },
-    "Microsoft.Extensions.Caching.Abstractions/2.1.0": {
-      "sha512": "R7uAb/JRwb9YQBB0qqLlX2qv4RBC/BqqIqFDqzvCjT0T2uPpbuTINLKGp+7uX2dbxjt3cpebSu5GvebeiKYpQA==",
+    "Microsoft.Extensions.Caching.Abstractions/2.1.1": {
+      "sha512": "LbT7Ry1waNBksnngFNdaNmEglQMJ8g7F6tbSoyoqpEW35W/Cj4YwURDVwoRS+jtyf6YKsTdPHV643jMMuJBi9g==",
       "type": "package",
-      "path": "microsoft.extensions.caching.abstractions/2.1.0",
+      "path": "microsoft.extensions.caching.abstractions/2.1.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Abstractions.xml",
-        "microsoft.extensions.caching.abstractions.2.1.0.nupkg.sha512",
+        "microsoft.extensions.caching.abstractions.2.1.1.nupkg.sha512",
         "microsoft.extensions.caching.abstractions.nuspec"
       ]
     },
@@ -3931,19 +3918,17 @@
         "microsoft.extensions.caching.memory.nuspec"
       ]
     },
-    "Microsoft.Extensions.Caching.Redis.Core/1.0.3": {
-      "sha512": "WkOmotEa+Acv/mfZA+O6OvKtCdPVsDBApU1YIj7FWOzx4O3KFiE16+Vh7JRITtoBIIgjBNTM8BaDhtCDMKd97A==",
+    "Microsoft.Extensions.Caching.Redis/2.1.1": {
+      "sha512": "wF0s5lp3NNtAj5Hk6Sv9SjyLyanIacpInC7y0B4vrVZZML/5W52KBSAOkM9T+LKPUZJUImF9IoY/H0IH/BbYiA==",
       "type": "package",
-      "path": "microsoft.extensions.caching.redis.core/1.0.3",
+      "path": "microsoft.extensions.caching.redis/2.1.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net451/Microsoft.Extensions.Caching.Redis.dll",
-        "lib/net451/Microsoft.Extensions.Caching.Redis.xml",
-        "lib/netstandard1.5/Microsoft.Extensions.Caching.Redis.dll",
-        "lib/netstandard1.5/Microsoft.Extensions.Caching.Redis.xml",
-        "microsoft.extensions.caching.redis.core.1.0.3.nupkg.sha512",
-        "microsoft.extensions.caching.redis.core.nuspec"
+        "lib/netstandard2.0/Microsoft.Extensions.Caching.Redis.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Caching.Redis.xml",
+        "microsoft.extensions.caching.redis.2.1.1.nupkg.sha512",
+        "microsoft.extensions.caching.redis.nuspec"
       ]
     },
     "Microsoft.Extensions.Configuration/2.1.0": {
@@ -4821,10 +4806,10 @@
         "microsoft.testplatform.testhost.nuspec"
       ]
     },
-    "Microsoft.Win32.Primitives/4.0.1": {
-      "sha512": "fQnBHO9DgcmkC9dYSJoBqo6sH1VJwJprUHh8F3hbcRlxiQiBUuTntdk8tUwV490OqC2kQUrinGwZyQHTieuXRA==",
+    "Microsoft.Win32.Primitives/4.3.0": {
+      "sha512": "9ZQKCWxH7Ijp9BfahvL2Zyf1cJIk8XYLF6Yjzr2yi0b2cOut/HQ31qf1ThHAgCc3WiZMdnWcfJCgN82/0UunxA==",
       "type": "package",
-      "path": "microsoft.win32.primitives/4.0.1",
+      "path": "microsoft.win32.primitives/4.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4837,7 +4822,7 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "microsoft.win32.primitives.4.0.1.nupkg.sha512",
+        "microsoft.win32.primitives.4.3.0.nupkg.sha512",
         "microsoft.win32.primitives.nuspec",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
@@ -5162,17 +5147,17 @@
         "version.txt"
       ]
     },
-    "runtime.native.System.IO.Compression/4.1.0": {
-      "sha512": "Ob7nvnJBox1aaB222zSVZSkf4WrebPG4qFscfK7vmD7P7NxoSxACQLtO7ytWpqXDn2wcd/+45+EAZ7xjaPip8A==",
+    "runtime.native.System.IO.Compression/4.3.0": {
+      "sha512": "INBPonS5QPEgn7naufQFXJEp3zX6L4bwHgJ/ZH78aBTpeNfQMtf7C6VrAFhlq2xxWBveIOWyFzQjJ8XzHMhdOQ==",
       "type": "package",
-      "path": "runtime.native.system.io.compression/4.1.0",
+      "path": "runtime.native.system.io.compression/4.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/_._",
-        "runtime.native.system.io.compression.4.1.0.nupkg.sha512",
+        "runtime.native.system.io.compression.4.3.0.nupkg.sha512",
         "runtime.native.system.io.compression.nuspec"
       ]
     },
@@ -5190,32 +5175,18 @@
         "runtime.native.system.net.http.nuspec"
       ]
     },
-    "runtime.native.System.Net.Security/4.0.1": {
-      "sha512": "Az6Ff6rZFb8nYGAaejFR6jr8ktt9f3e1Q/yKdw0pwHNTLaO/1eCAC9vzBoR9YAb0QeZD6fZXl1A9tRB5stpzXA==",
+    "runtime.native.System.Net.Security/4.3.0": {
+      "sha512": "M2nN92ePS8BgQ2oi6Jj3PlTUzadYSIWLdZrHY1n1ZcW9o4wAQQ6W+aQ2lfq1ysZQfVCgDwY58alUdowrzezztg==",
       "type": "package",
-      "path": "runtime.native.system.net.security/4.0.1",
+      "path": "runtime.native.system.net.security/4.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/_._",
-        "runtime.native.system.net.security.4.0.1.nupkg.sha512",
+        "runtime.native.system.net.security.4.3.0.nupkg.sha512",
         "runtime.native.system.net.security.nuspec"
-      ]
-    },
-    "runtime.native.System.Security.Cryptography/4.0.0": {
-      "sha512": "2CQK0jmO6Eu7ZeMgD+LOFbNJSXHFVQbCJJkEyEwowh1SCgYnrn9W9RykMfpeeVGw7h4IBvYikzpGUlmZTUafJw==",
-      "type": "package",
-      "path": "runtime.native.system.security.cryptography/4.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/netstandard1.0/_._",
-        "runtime.native.system.security.cryptography.4.0.0.nupkg.sha512",
-        "runtime.native.system.security.cryptography.nuspec"
       ]
     },
     "runtime.native.System.Security.Cryptography.Apple/4.3.0": {
@@ -5406,22 +5377,20 @@
         "version.txt"
       ]
     },
-    "StackExchange.Redis.StrongName/1.1.608": {
-      "sha512": "n1Nt4JiBTPmObCTRWoFgfYFl2UfiPSZAbvEYSypgO64da8XD4G4cT4aLoAUIPrDMSXbrIZTTyYlrPO29SvxtKQ==",
+    "StackExchange.Redis.StrongName/1.2.4": {
+      "sha512": "qrfSB1BnmM17V20A4yvvNA0HNiDgnBd/CcjaeMKMA4qtup1uuBUMyhl20oj31fRVo71E/fXTbmQCuM9ytBJs6w==",
       "type": "package",
-      "path": "stackexchange.redis.strongname/1.1.608",
+      "path": "stackexchange.redis.strongname/1.2.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net40/StackExchange.Redis.StrongName.dll",
-        "lib/net40/StackExchange.Redis.StrongName.xml",
         "lib/net45/StackExchange.Redis.StrongName.dll",
         "lib/net45/StackExchange.Redis.StrongName.xml",
         "lib/net46/StackExchange.Redis.StrongName.dll",
         "lib/net46/StackExchange.Redis.StrongName.xml",
         "lib/netstandard1.5/StackExchange.Redis.StrongName.dll",
         "lib/netstandard1.5/StackExchange.Redis.StrongName.xml",
-        "stackexchange.redis.strongname.1.1.608.nupkg.sha512",
+        "stackexchange.redis.strongname.1.2.4.nupkg.sha512",
         "stackexchange.redis.strongname.nuspec"
       ]
     },
@@ -6906,10 +6875,10 @@
         "system.io.nuspec"
       ]
     },
-    "System.IO.Compression/4.1.0": {
-      "sha512": "TjnBS6eztThSzeSib+WyVbLzEdLKUcEHN69VtS3u8aAsSc18FU6xCZlNWWsEd8SKcXAE+y1sOu7VbU8sUeM0sg==",
+    "System.IO.Compression/4.3.0": {
+      "sha512": "YHndyoiV90iu4iKG115ibkhrG+S3jBm8Ap9OwoUAzO5oPDAWcr0SFwQFm0HjM8WkEZWo0zvLTyLmbvTkW1bXgg==",
       "type": "package",
-      "path": "system.io.compression/4.1.0",
+      "path": "system.io.compression/4.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -6973,7 +6942,7 @@
         "runtimes/unix/lib/netstandard1.3/System.IO.Compression.dll",
         "runtimes/win/lib/net46/System.IO.Compression.dll",
         "runtimes/win/lib/netstandard1.3/System.IO.Compression.dll",
-        "system.io.compression.4.1.0.nupkg.sha512",
+        "system.io.compression.4.3.0.nupkg.sha512",
         "system.io.compression.nuspec"
       ]
     },
@@ -7294,10 +7263,10 @@
         "version.txt"
       ]
     },
-    "System.Net.NameResolution/4.0.0": {
-      "sha512": "JdqRdM1Qym3YehqdKIi5LHrpypP4JMfxKQSNCJ2z4WawkG0il+N3XfNeJOxll2XrTnG7WgYYPoeiu/KOwg0DQw==",
+    "System.Net.NameResolution/4.3.0": {
+      "sha512": "AFYl08R7MrsrEjqpQWTZWBadqXyTzNDaWpMqyxhb0d6sGhV6xMDKueuBXlLL30gz+DIRY6MpdgnHWlCh5wmq9w==",
       "type": "package",
-      "path": "system.net.nameresolution/4.0.0",
+      "path": "system.net.nameresolution/4.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -7332,14 +7301,14 @@
         "runtimes/win/lib/net46/System.Net.NameResolution.dll",
         "runtimes/win/lib/netcore50/System.Net.NameResolution.dll",
         "runtimes/win/lib/netstandard1.3/System.Net.NameResolution.dll",
-        "system.net.nameresolution.4.0.0.nupkg.sha512",
+        "system.net.nameresolution.4.3.0.nupkg.sha512",
         "system.net.nameresolution.nuspec"
       ]
     },
-    "System.Net.Primitives/4.0.11": {
-      "sha512": "hVvfl4405DRjA2408luZekbPhplJK03j2Y2lSfMlny7GHXlkByw1iLnc9mgKW0GdQn73vvMcWrWewAhylXA4Nw==",
+    "System.Net.Primitives/4.3.0": {
+      "sha512": "qOu+hDwFwoZPbzPvwut2qATe3ygjeQBDQj91xlsaqGFQUI5i4ZnZb8yyQuLGpDGivEPIt8EJkd1BVzVoP31FXA==",
       "type": "package",
-      "path": "system.net.primitives/4.0.11",
+      "path": "system.net.primitives/4.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -7411,14 +7380,14 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.net.primitives.4.0.11.nupkg.sha512",
+        "system.net.primitives.4.3.0.nupkg.sha512",
         "system.net.primitives.nuspec"
       ]
     },
-    "System.Net.Security/4.0.0": {
-      "sha512": "uM1JaYJciCc2w7efD6du0EpQ1n5ZQqE6/P43/aI4H5E59qvP+wt3l70KIUF/Ha7NaeXGoGNFPVO0MB80pVHk2g==",
+    "System.Net.Security/4.3.0": {
+      "sha512": "IgJKNfALqw7JRWp5LMQ5SWHNKvXVz094U6wNE3c1i8bOkMQvgBL+MMQuNt3xl9Qg9iWpj3lFxPZEY6XHmROjMQ==",
       "type": "package",
-      "path": "system.net.security/4.0.0",
+      "path": "system.net.security/4.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -7453,14 +7422,14 @@
         "runtimes/win/lib/net46/System.Net.Security.dll",
         "runtimes/win/lib/netstandard1.3/System.Net.Security.dll",
         "runtimes/win7/lib/netcore50/_._",
-        "system.net.security.4.0.0.nupkg.sha512",
+        "system.net.security.4.3.0.nupkg.sha512",
         "system.net.security.nuspec"
       ]
     },
-    "System.Net.Sockets/4.1.0": {
-      "sha512": "xAz0N3dAV/aR/9g8r0Y5oEqU1JRsz29F5EGb/WVHmX3jVSLqi2/92M5hTad2aNWovruXrJpJtgZ9fccPMG9uSw==",
+    "System.Net.Sockets/4.3.0": {
+      "sha512": "m6icV6TqQOAdgt5N/9I5KNpjom/5NFtkmGseEH+AK/hny8XrytLH3+b5M8zL/Ycg3fhIocFpUMyl/wpFnVRvdw==",
       "type": "package",
-      "path": "system.net.sockets/4.1.0",
+      "path": "system.net.sockets/4.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -7491,7 +7460,7 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.net.sockets.4.1.0.nupkg.sha512",
+        "system.net.sockets.4.3.0.nupkg.sha512",
         "system.net.sockets.nuspec"
       ]
     },
@@ -9623,10 +9592,10 @@
         "version.txt"
       ]
     },
-    "System.Threading.Thread/4.0.0": {
-      "sha512": "gIdJqDXlOr5W9zeqFErLw3dsOsiShSCYtF9SEHitACycmvNvY8odf9kiKvp6V7aibc8C4HzzNBkWXjyfn7plbQ==",
+    "System.Threading.Thread/4.3.0": {
+      "sha512": "OHmbT+Zz065NKII/ZHcH9XO1dEuLGI1L2k7uYss+9C1jLxTC9kTZZuzUOyXHayRk+dft9CiDf3I/QZ0t8JKyBQ==",
       "type": "package",
-      "path": "system.threading.thread/4.0.0",
+      "path": "system.threading.thread/4.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -9659,14 +9628,14 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.threading.thread.4.0.0.nupkg.sha512",
+        "system.threading.thread.4.3.0.nupkg.sha512",
         "system.threading.thread.nuspec"
       ]
     },
-    "System.Threading.ThreadPool/4.0.10": {
-      "sha512": "IMXgB5Vf/5Qw1kpoVgJMOvUO1l32aC+qC3OaIZjWJOjvcxuxNWOK2ZTWWYXfij22NHxT2j1yWX5vlAeQWld9vA==",
+    "System.Threading.ThreadPool/4.3.0": {
+      "sha512": "k/+g4b7vjdd4aix83sTgC9VG6oXYKAktSfNIJUNGxPEj7ryEOfzHHhfnmsZvjxawwcD9HyWXKCXmPjX8U4zeSw==",
       "type": "package",
-      "path": "system.threading.threadpool/4.0.10",
+      "path": "system.threading.threadpool/4.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -9699,14 +9668,14 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.threading.threadpool.4.0.10.nupkg.sha512",
+        "system.threading.threadpool.4.3.0.nupkg.sha512",
         "system.threading.threadpool.nuspec"
       ]
     },
-    "System.Threading.Timer/4.0.1": {
-      "sha512": "saGfUV8uqVW6LeURiqxcGhZ24PzuRNaUBtbhVeuUAvky1naH395A/1nY0P2bWvrw/BreRtIB/EzTDkGBpqCwEw==",
+    "System.Threading.Timer/4.3.0": {
+      "sha512": "Z6YfyYTCg7lOZjJzBjONJTFKGN9/NIYKSxhU5GRd+DTwHSZyvWp1xuI5aR+dLg+ayyC5Xv57KiY4oJ0tMO89fQ==",
       "type": "package",
-      "path": "system.threading.timer/4.0.1",
+      "path": "system.threading.timer/4.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -9754,7 +9723,7 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.threading.timer.4.0.1.nupkg.sha512",
+        "system.threading.timer.4.3.0.nupkg.sha512",
         "system.threading.timer.nuspec"
       ]
     },

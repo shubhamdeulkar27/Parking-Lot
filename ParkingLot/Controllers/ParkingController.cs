@@ -10,6 +10,8 @@ using CommonLayer.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Distributed;
+using Newtonsoft.Json;
 
 namespace ParkingLot.Controllers
 {
@@ -25,13 +27,16 @@ namespace ParkingLot.Controllers
         /// </summary>
         private IParkingLotBL parkingLotBL;
 
+        private IDistributedCache distributedCache;
+
         /// <summary>
         /// Constrcutor For Setting ParkingLotBL.
         /// </summary>
         /// <param name="parkingLotBL"></param>
-        public ParkingController(IParkingLotBL parkingLotBL)
+        public ParkingController(IParkingLotBL parkingLotBL, IDistributedCache distributedCache)
         {
             this.parkingLotBL = parkingLotBL;
+            this.distributedCache = distributedCache;
         }
 
         /// <summary>
@@ -69,6 +74,7 @@ namespace ParkingLot.Controllers
                 
                 if(parkResponse != null && parkResponse.ParkingSlot != "Unavailable")
                 {
+                    distributedCache.Remove("Vehicals");
                     return Ok(new { Success = true, Message = "Vehical Parked", Data = parkResponse });
                 }
                 else if (parkResponse == null)
@@ -114,6 +120,7 @@ namespace ParkingLot.Controllers
                 var unparkResponse = this.parkingLotBL.Unpark(VehicalNumber);
                 if(unparkResponse != null && unparkResponse.Status=="Unparked")
                 {
+                    distributedCache.Remove("Vehicals");
                     return Ok(new { Success = true, Message = "Vehical Unparked", Data = unparkResponse });
                 }
                 else if(unparkResponse != null && unparkResponse.Status == "!Unparked")
@@ -390,7 +397,26 @@ namespace ParkingLot.Controllers
         {
             try
             {
-                List<ParkingDetails> list = this.parkingLotBL.GetAllDetails();
+                //Creating Empty List.
+                List<ParkingDetails> list = new List<ParkingDetails>();
+
+                //Fetching Data from Redis Cache.
+                var data = distributedCache.GetAsync("Vehicals");
+                string cacheKey = "Vehicals";
+                var cachedObject = distributedCache.GetString(cacheKey);
+                
+                if(string.IsNullOrEmpty(cachedObject))
+                {
+                    //Calling BL.
+                    list = this.parkingLotBL.GetAllDetails();
+                    distributedCache.SetString(cacheKey, JsonConvert.SerializeObject(list));
+                }
+                else
+                {
+                    list = JsonConvert.DeserializeObject<List<ParkingDetails>>(cachedObject);
+                }
+
+                //Sending Response.
                 if (list != null)
                 {
                     return Ok(new { Success = true, Message = "Vehical Details Fetched Successful", Data = list });
