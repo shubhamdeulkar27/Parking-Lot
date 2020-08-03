@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryLayer", "..\Repos
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XunitTests", "..\XunitTests\XunitTests.csproj", "{ADABDAFD-45B2-4F69-AEAE-B8470153D516}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureMessageReceiver", "..\AzureMessageReceiver\AzureMessageReceiver.csproj", "{EC78E682-C3B9-4F91-8C42-FAB9FAFA52EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{ADABDAFD-45B2-4F69-AEAE-B8470153D516}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADABDAFD-45B2-4F69-AEAE-B8470153D516}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADABDAFD-45B2-4F69-AEAE-B8470153D516}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC78E682-C3B9-4F91-8C42-FAB9FAFA52EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC78E682-C3B9-4F91-8C42-FAB9FAFA52EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC78E682-C3B9-4F91-8C42-FAB9FAFA52EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC78E682-C3B9-4F91-8C42-FAB9FAFA52EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

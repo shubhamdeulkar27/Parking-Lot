@@ -27,7 +27,15 @@ namespace ParkingLot.Controllers
         /// </summary>
         private IParkingLotBL parkingLotBL;
 
+        /// <summary>
+        /// IDistributedcache reference for Redis.
+        /// </summary>
         private IDistributedCache distributedCache;
+
+        /// <summary>
+        /// Sender Class Object For Azure Service Queue.
+        /// </summary>
+        Sender sender = new Sender();
 
         /// <summary>
         /// Constrcutor For Setting ParkingLotBL.
@@ -75,6 +83,18 @@ namespace ParkingLot.Controllers
                 if(parkResponse != null && parkResponse.ParkingSlot != "Unavailable")
                 {
                     distributedCache.Remove("Vehicals");
+
+                    //Sending Message To Azure Service Queue.
+                    string message = "Hello " + Convert.ToString(parkResponse.VehicalOwnerName) +
+                                     " Your \n" + "Vehical "+ parkResponse.Brand.ToString() +", " +
+                                     "VehcialNumber: "+ parkResponse.VehicalNumber.ToString()
+                                     +" \nParked In " + Convert.ToString(parkResponse.ParkingSlot) +
+                                     " Slot \nBy " + Convert.ToString(parkResponse.DriverName)+
+                                     "\nAt " + parkResponse.ParkingDate.Date.ToString("d") + " & " 
+                                     + parkResponse.ParkingDate.ToString("hh:mm tt");
+                    sender.Send(message, "Parking", parkResponse.VehicalOwnerEmail);
+
+                    //Sending Response.
                     return Ok(new { Success = true, Message = "Vehical Parked", Data = parkResponse });
                 }
                 else if (parkResponse == null)
@@ -121,6 +141,17 @@ namespace ParkingLot.Controllers
                 if(unparkResponse != null && unparkResponse.Status=="Unparked")
                 {
                     distributedCache.Remove("Vehicals");
+
+                    //Sending Messag To Azure Service Queue.
+                    string message = "Hello " + Convert.ToString(unparkResponse.VehicalOwnerName) +
+                                                         " Your \n" + "Vehical " + unparkResponse.Brand.ToString() + ", " +
+                                                         "VehcialNumber: " + unparkResponse.VehicalNumber.ToString()
+                                                         + " \nDeparted By " + Convert.ToString(unparkResponse.DriverName) +
+                                                         "\nAt " + unparkResponse.UnparkDate.Date.ToString("d") + " & "
+                                                         + unparkResponse.UnparkDate.ToString("hh:mm tt");
+                    sender.Send(message, "Departing", unparkResponse.VehicalOwnerEmail);
+
+                    //Sending Response.
                     return Ok(new { Success = true, Message = "Vehical Unparked", Data = unparkResponse });
                 }
                 else if(unparkResponse != null && unparkResponse.Status == "!Unparked")

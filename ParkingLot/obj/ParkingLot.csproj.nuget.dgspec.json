@@ -167,6 +167,10 @@
               "target": "Package",
               "version": "[2.1.2, )"
             },
+            "Microsoft.Azure.ServiceBus": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
             "Microsoft.Extensions.Caching.Redis": {
               "target": "Package",
               "version": "[2.1.1, )"
