@@ -4,6 +4,8 @@ using CommonLayer.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Caching.Redis;
 using Microsoft.Extensions.Configuration;
 using Moq;
 using Newtonsoft.Json;
@@ -36,10 +38,11 @@ namespace XunitTests
         private readonly IParkingLotBL parkingLotBL;
         private readonly IParkingLotRL parkingLotRL;
 
-        //Reference Of DbContext and Configuration.
+        //Reference Of DbContext, Configuration and IDistributed.
         public static DbContextOptions<ParkingLotDBContext> dbContextOptions { get; }
         private readonly IConfiguration configuration;
         private readonly ParkingLotDBContext dbContext;
+        private readonly IDistributedCache distributedCache;
 
         //Connection String.
         public static string connectionString = "Server=localhost\\SQLEXPRESS;Database=ParkingLotDB;Trusted_Connection=True";
@@ -75,6 +78,12 @@ namespace XunitTests
                 {"ConnectionStrings:ParkingLotConnectionString","Server=localhost\\SQLEXPRESS;Database=ParkingLotDB;Trusted_Connection=True;" }
             };
             this.configuration = new ConfigurationBuilder().AddInMemoryCollection(myConfiguration).Build();
+            
+            distributedCache = new RedisCache(new RedisCacheOptions
+            {
+                Configuration = "parkinglot.redis.cache.windows.net:6380,password=RxLRe+cHYDzGro4UX8D4VtkfsifZ93ZM8CJlKI5Tobw=,ssl=True,abortConnect=False",
+                InstanceName = "master"
+            });
 
             userRL = new UserRL(dbContext);
             userBL = new UserBL(userRL);
@@ -82,7 +91,7 @@ namespace XunitTests
 
             parkingLotRL = new ParkingLotRL(dbContext);
             parkingLotBL = new ParkingLotBL(parkingLotRL);
-            parkingController = new ParkingController(parkingLotBL);
+            parkingController = new ParkingController(parkingLotBL, distributedCache);
         }
 
         //Constants.
@@ -394,7 +403,7 @@ namespace XunitTests
             dbContext.SaveChanges();
             var parkingRL = new ParkingLotRL(dbContext);
             var parkingBL = new ParkingLotBL(parkingRL);
-            var parkingController = new ParkingController(parkingBL);
+            var parkingController = new ParkingController(parkingBL, distributedCache);
 
             //Setting JWT Claim - Name
             Claim Name = new Claim(ClaimTypes.Name, "Ramesh");
@@ -540,7 +549,7 @@ namespace XunitTests
                 TotalLotLimit = 0
             };
             IParkingLotBL parkingLotBL = new ParkingLotBL(parkingLotRL);
-            ParkingController parkingController = new ParkingController(parkingLotBL);
+            ParkingController parkingController = new ParkingController(parkingLotBL, distributedCache);
             
             //Act
             var response = parkingController.CheckLotStatus() as NotFoundObjectResult;
@@ -630,7 +639,7 @@ namespace XunitTests
             dbContext.SaveChanges();
             var parkingRL = new ParkingLotRL(dbContext);
             var parkingBL = new ParkingLotBL(parkingRL);
-            var parkingController = new ParkingController(parkingBL);
+            var parkingController = new ParkingController(parkingBL, distributedCache);
 
             string VehicalNumber = "MH 07 PZ 1234";
             var response = parkingController.GetVehicalByNumber(VehicalNumber) as NotFoundObjectResult;
@@ -1062,29 +1071,6 @@ namespace XunitTests
             Assert.Equal(Message, responseMessage);
             Assert.IsType<List<ParkingDetails>>(responseData);
         
-        }
-
-        /// <summary>
-        /// Test Case For Get All Vehical API - should Return Ok. 
-        /// </summary>
-        [Fact]
-        public void Parking_GetAllShouldReturnOk()
-        {
-            //Act
-            var response = parkingController.GetAllDetails() as OkObjectResult;
-            var dataResponse = JToken.Parse(JsonConvert.SerializeObject(response.Value));
-            var responseSuccess = dataResponse["Success"].ToObject<bool>();
-            var responseMessage = dataResponse["Message"].ToString();
-            var responseData = dataResponse["Data"].ToObject<List<ParkingDetails>>();
-
-            //Expected Values.
-            string Message = "Vehical Details Fetched Successful";
-
-            //Asserting Values.
-            Assert.IsType<OkObjectResult>(response);
-            Assert.Equal(SuccessTrue, responseSuccess);
-            Assert.Equal(Message, responseMessage);
-            Assert.IsType<List<ParkingDetails>>(responseData);
         }
     }
 }
