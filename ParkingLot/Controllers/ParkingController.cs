@@ -175,7 +175,7 @@ namespace ParkingLot.Controllers
         /// <returns></returns>
         [Authorize(Roles ="Admin, Owner, Security")]
         [HttpGet]
-        [Route("IsSlotAvialble")]
+        [Route("Slot/Avialbility")]
         public IActionResult CheckLotStatus()
         { 
             try
